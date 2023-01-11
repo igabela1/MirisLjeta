@@ -1,8 +1,5 @@
-package ba.unsa.etf.rpr.Dao;
+package ba.unsa.etf.rpr.dao;
 
-import ba.unsa.etf.rpr.Domain.Room_Bungalow;
-
-import java.sql.ResultSet;
 import java.util.List;
 
 /**
