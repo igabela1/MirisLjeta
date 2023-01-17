@@ -4,12 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 
 public class HomeController {
-    public Button RegistracijaDugmeId;
-    public Button PrijavaDugmeId;
 
-    public void Registracija(ActionEvent actionEvent) {
-    }
+    public Button myProfileButton;
+    public Button aboutUsButton;
 
-    public void Prijava(ActionEvent actionEvent) {
-    }
 }

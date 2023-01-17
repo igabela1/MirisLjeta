@@ -1,8 +1,10 @@
 package ba.unsa.etf.rpr.Domain;
+import ba.unsa.etf.rpr.domain.Idable;
+
 import java.sql.Date;
 import java.util.Objects;
 
-public class Reservation {
+public class Reservation implements Idable {
 
     private int id;
     private int userId;
@@ -47,16 +49,16 @@ public class Reservation {
         this.roomId = roomId;
     }
 
-    public Date getCheckIn() {
-        return checkIn;
+    public java.sql.Date getCheckIn() {
+        return (java.sql.Date) checkIn;
     }
 
     public void setCheckIn(Date checkIn) {
         this.checkIn = checkIn;
     }
 
-    public Date getCheckOut() {
-        return checkOut;
+    public java.sql.Date getCheckOut() {
+        return (java.sql.Date) checkOut;
     }
 
     public void setCheckOut(Date checkOut) {
@@ -88,5 +90,7 @@ public class Reservation {
     }
 
 
+    public void setRoomId(Object room_id) {
+    }
 }
 

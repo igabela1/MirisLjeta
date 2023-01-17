@@ -1,7 +1,9 @@
 package ba.unsa.etf.rpr.Domain;
+import ba.unsa.etf.rpr.domain.Idable;
+
 import java.util.Objects;
 
-public class Room_Bungalow {
+public class Room_Bungalow implements Idable {
 
     private int id;
 
@@ -13,6 +15,10 @@ public class Room_Bungalow {
         this.id = id;
         this.isAvailable = isAvailable;
         this.roomDescription = roomDescription;
+
+    }
+
+    public Room_Bungalow() {
 
     }
 

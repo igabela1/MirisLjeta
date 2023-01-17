@@ -1,7 +1,9 @@
 package ba.unsa.etf.rpr.Domain;
+import ba.unsa.etf.rpr.domain.Idable;
+
 import java.util.Objects;
 
-public class User {
+public class User implements Idable {
 
     private int id;
     private String email;
@@ -15,6 +17,10 @@ public class User {
         this.username = username;
         this.password = password;
         this.userType = userType;
+    }
+
+    public User() {
+
     }
 
     public int getId() {
