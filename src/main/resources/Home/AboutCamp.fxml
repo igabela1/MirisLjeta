@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane prefHeight="395.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.controllers.AboutCampController">
+
+    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="400.0" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@../IMG/natpis.jpg" />
+        </image>
+    </ImageView>
+    <ImageView fitHeight="172.0" fitWidth="113.0" layoutX="279.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@../IMG/lez.jpg" />
+        </image>
+    </ImageView>
+    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="400.0" layoutY="159.0" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@../IMG/put.jpg" />
+        </image>
+    </ImageView>
+    <Text layoutX="29.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to our room-bungalow booking app, The smell of summer! We are a campsite based in the beautiful city of Ostrožac on the coast of Jablanica lake, Bosnia and Herzegovina." wrappingWidth="188.42105102539062" />
+    <Text layoutX="14.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The camp was founded in 1997. We got our name from the music band of the camp owner.In the beginning, we started as a small beach with the possibility of setting up your own tents." wrappingWidth="321.9909553527832" />
+    <Text layoutX="14.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="In addition to rooms and wooden bungalows/houses, we offer the possibility of renting rafts, canoes, boats and pedal boats. We also have a small restaurant in our motorhome where we serve traditional Bosnian food and drinks." wrappingWidth="321.9909553527832" />
+    <Text layoutX="389.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone:">
+        <font>
+            <Font name="System Bold" size="12.0" />
+        </font>
+    </Text>
+    <Text layoutX="389.0" layoutY="331.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E-mail:">
+        <font>
+            <Font name="System Bold" size="12.0" />
+        </font>
+    </Text>
+    <Text layoutX="444.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+387 62 716 161" />
+    <Text layoutX="444.0" layoutY="331.0" strokeType="OUTSIDE" strokeWidth="0.0" text="kampmirisljeta@hotmail.com" wrappingWidth="155.8480224609375" />
+    <Text layoutX="384.0" layoutY="363.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address:">
+        <font>
+            <Font name="System Bold" size="12.0" />
+        </font>
+    </Text>
+    <Text layoutX="447.0" layoutY="354.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Otrožac bb 88423, Jablanica, Jablaničko jezero" wrappingWidth="149.0" />
+   <ImageView fx:id="goBack" fitHeight="30.0" fitWidth="30.0" layoutX="-1.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../IMG/goBackm.png" />
+      </image>
+   </ImageView>
+
+</Pane>
