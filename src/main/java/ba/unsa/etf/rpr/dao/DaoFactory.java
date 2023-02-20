@@ -24,7 +24,6 @@ public class DaoFactory {
         return userDao;
     }
 
-    public static Dao<Object> Room_BungalowDao() {
-        return null;
-    }
+
+
 }
