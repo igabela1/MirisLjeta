@@ -10,7 +10,7 @@ import java.util.TreeMap;
 
 public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao {
     private static UserDaoSQLImpl instance = null;
-    private UserDaoSQLImpl() {
+    public UserDaoSQLImpl() {
         super("USERS");
     }
 
@@ -32,10 +32,10 @@ public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao {
             User person = new User();
             person.setId(rs.getInt("id"));
             person.setUsername(rs.getString("username"));
-            //person.setFirstName(rs.getString("first_name"));
-           // person.setLastName(rs.getString("last_name"));
+            person.setFirstName(rs.getString("first_name"));
+            person.setLastName(rs.getString("last_name"));
             person.setEmail(rs.getString("email"));
-           // person.setRole(rs.getInt("role"));
+            person.setisAdministrator(rs.getInt("role"));
             person.setPassword(rs.getString("password"));
             return person;
         } catch (Exception e) {
@@ -49,10 +49,10 @@ public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao {
         Map<String, Object> item = new TreeMap<>();
         item.put("id", object.getId());
         item.put("username", object.getUsername());
-       // item.put("first_name", object.getFirstName());
-        //item.put("last_name", object.getLastName());
+        item.put("first_name", object.getFirstName());
+        item.put("last_name", object.getLastName());
         item.put("email", object.getEmail());
-        //item.put("role", object.getRole());
+        item.put("isAdministrator", object.getisAdministrator());
         item.put("password", object.getPassword());
         return item;
     }
