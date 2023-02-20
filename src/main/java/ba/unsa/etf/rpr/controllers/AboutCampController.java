@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr.controllers;
 
+import ba.unsa.etf.rpr.Domain.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -17,21 +18,19 @@ import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.util.EventObject;
 
-public class AboutCampController extends Parent{
-
-
-   /*public void switchToHome(ActionEvent event) throws IOException{
-       root=FXMLLoader.load(getClass().getResource("home.fxml"));
-       stage=(Stage)((Node)event.getSource()).getScene().getWindow();
-       scene=new Scene(root);
-       stage.setScene(scene);
-       stage.show();
-
-   }*/
+public class AboutCampController {
 
     @FXML
     private ImageView goBack;
-    private EventObject event;
+
+    public User getUser() {
+        return user;
+    }
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    private User user;
 
     public void initialize() {
         goBack.setOnMouseClicked(event -> {
