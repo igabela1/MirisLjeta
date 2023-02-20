@@ -9,14 +9,16 @@ public class User implements Idable {
     private String email;
     private String username;
     private String password;
-    private boolean userType;
+    private String lastName;
+    private int isAdministrator;
+    private String firstName;
 
-    public User(int id, String email, String username, String password, boolean userType) {
+    public User(int id, String email, String username, String password, int isAdministrator) {
         this.id = id;
         this.email = email;
         this.username = username;
         this.password = password;
-        this.userType = userType;
+        this.isAdministrator = isAdministrator;
     }
 
     public User() {
@@ -39,9 +41,6 @@ public class User implements Idable {
         return password;
     }
 
-    public boolean isUserType() {
-        return userType;
-    }
 
     public void setId(int id) {
         this.id = id;
@@ -59,21 +58,19 @@ public class User implements Idable {
         this.password = password;
     }
 
-    public void setUserType(boolean userType) {
-        this.userType = userType;
-    }
+
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return id == user.id && userType == user.userType && Objects.equals(email, user.email) && Objects.equals(username, user.username) && Objects.equals(password, user.password);
+        return id == user.id && isAdministrator == user.isAdministrator && Objects.equals(email, user.email) && Objects.equals(username, user.username) && Objects.equals(password, user.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, email, username, password, userType);
+        return Objects.hash(id, email, username, password, isAdministrator);
     }
 
     @Override
@@ -83,8 +80,38 @@ public class User implements Idable {
                 ", email='" + email + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", userType=" + userType +
+                ", userType=" + isAdministrator +
                 '}';
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+
+
+    public void setisAdministrator(int isAdministrator) {
+        this.isAdministrator = isAdministrator;
+    }
+
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public int getisAdministrator() {
+        return isAdministrator;
     }
 }
 
