@@ -1,5 +1,5 @@
 package ba.unsa.etf.rpr.Domain;
-import ba.unsa.etf.rpr.domain.Idable;
+import ba.unsa.etf.rpr.Domain.Idable;
 
 import java.sql.Date;
 import java.util.Objects;

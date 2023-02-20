@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
-public class HomeController extends Parent{
+public class HomeController {
 
 
     @FXML

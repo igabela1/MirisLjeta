@@ -17,14 +17,14 @@ package ba.unsa.etf.rpr.controllers;
         import java.io.IOException;
         import java.util.EventObject;
 
-public class MyProfile extends Parent {
+public class MyProfile {
 
 
 
 
     @FXML
     private ImageView goBack;
-    private EventObject event;
+
 
     public void initialize() {
         goBack.setOnMouseClicked(event -> {
