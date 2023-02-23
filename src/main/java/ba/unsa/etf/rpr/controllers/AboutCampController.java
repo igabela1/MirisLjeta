@@ -3,20 +3,13 @@ package ba.unsa.etf.rpr.controllers;
 import ba.unsa.etf.rpr.Domain.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import javafx.stage.Window;
 
-import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.io.IOException;
-import java.util.EventObject;
 
 public class AboutCampController {
 
@@ -40,6 +33,9 @@ public class AboutCampController {
             // Open previous window
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Home/home.fxml"));
+                HomeController controller = new HomeController();
+                controller.setUser(user);
+                fxmlLoader.setController(controller);
                 Parent root = fxmlLoader.load();
                 Stage homeStage = new Stage();
                 homeStage.setScene(new Scene(root));
