@@ -1,27 +1,29 @@
 package ba.unsa.etf.rpr.dao;
 
+import ba.unsa.etf.rpr.Business.RoomBungManager;
+
 public class DaoFactory {
 
-    private static final Room_BungalowDao room_bungalowDao = Room_BungalowDaoSQLImpl.getInstance();
+    private static final Room_BungalowDao Room_BungalowDao = Room_BungalowDaoSQLImpl.getInstance();
 
-    private static final UserDao userDao = UserDaoSQLImpl.getInstance();
-    private static final ReservationDao reservationDao = ReservationDaoSQLImpl.getInstance();
+    private static final UserDao UserDao = UserDaoSQLImpl.getInstance();
+    private static final ReservationDao ReservationDao = ReservationDaoSQLImpl.getInstance();
 
 
     private DaoFactory(){
     }
 
     public static Room_BungalowDao room_bungalowDao(){
-        return room_bungalowDao;
+        return Room_BungalowDao;
     }
 
     public static ReservationDao reservationDao(){
-        return reservationDao;
+        return ReservationDao;
     }
 
 
     public static UserDao userDao(){
-        return userDao;
+        return UserDao;
     }
 
 
