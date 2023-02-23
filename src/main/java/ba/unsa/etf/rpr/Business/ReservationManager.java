@@ -1,4 +1,5 @@
 package ba.unsa.etf.rpr.Business;
+import ba.unsa.etf.rpr.Domain.User;
 import ba.unsa.etf.rpr.dao.DaoFactory;
 import ba.unsa.etf.rpr.Domain.Reservation;
 import ba.unsa.etf.rpr.Exceptions.Room_BungalowException;
@@ -35,4 +36,7 @@ public class ReservationManager {
         return DaoFactory.reservationDao().getAll();
     }
 
+    public List<Reservation> getAllForUser(User user) throws SQLException{
+        return DaoFactory.reservationDao().getAllForUser(user);
+    }
 }
