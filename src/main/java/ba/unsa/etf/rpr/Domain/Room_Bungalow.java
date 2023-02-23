@@ -30,7 +30,7 @@ public class Room_Bungalow implements Idable {
         this.id = id;
     }
 
-    public boolean isAvailable() {
+    public boolean getisAvailable() {
         return isAvailable;
     }
 
@@ -51,8 +51,8 @@ public class Room_Bungalow implements Idable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Room_Bungalow that = (Room_Bungalow) o;
-        return id == that.id && isAvailable == that.isAvailable  && roomDescription.equals(that.roomDescription);
+        Room_Bungalow room = (Room_Bungalow) o;
+        return id == room.id && isAvailable == room.isAvailable  && roomDescription.equals(room.roomDescription);
     }
 
     @Override
