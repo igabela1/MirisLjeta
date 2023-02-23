@@ -1,19 +1,21 @@
 package ba.unsa.etf.rpr.Domain;
 import ba.unsa.etf.rpr.Domain.Idable;
 
-import java.sql.Date;
+
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class Reservation implements Idable {
 
     private int id;
     private int userId;
+    private User username;
     private int roomId;
 
-    private Date checkIn;
-    private Date checkOut;
-
-    public Reservation(int id, int userId, int roomId, Date checkIn, Date checkOut) {
+    private LocalDate checkIn;
+    private LocalDate checkOut;
+    public Reservation() { }
+    public Reservation(int id, int userId, int roomId, LocalDate checkIn, LocalDate checkOut) {
         this.id = id;
         this.userId = userId;
         this.roomId = roomId;
@@ -21,8 +23,14 @@ public class Reservation implements Idable {
         this.checkOut = checkOut;
     }
 
-    public Reservation() {
+    public Reservation(LocalDate checkIn, LocalDate checkOut, User username) {
+        this.checkIn = checkIn;
+        this.checkOut = checkOut;
 
+        this.username = username;
+    }
+
+    public Reservation(LocalDate checkIn, LocalDate checkOut, Room_Bungalow room, User user2) {
     }
 
     public int getId() {
@@ -40,28 +48,36 @@ public class Reservation implements Idable {
     public void setUserId(int userId) {
         this.userId = userId;
     }
-
-    public int getRoomId() {
-        return roomId;
+    public User getUsername() {
+        return username;
     }
 
-    public void setRoomId(int roomId) {
-        this.roomId = roomId;
+    public void setUsername(User username) {
+        this.username = username;
     }
 
-    public java.sql.Date getCheckIn() {
-        return (java.sql.Date) checkIn;
+
+    //public int getRoomId() {
+      //  return roomId;
+    //}
+
+    //public void setRoomId(int roomId) {
+      //  this.roomId = roomId;
+    //}
+
+    public LocalDate getCheckIn() {
+        return  checkIn;
     }
 
-    public void setCheckIn(Date checkIn) {
+    public void setCheckIn(LocalDate checkIn) {
         this.checkIn = checkIn;
     }
 
-    public java.sql.Date getCheckOut() {
-        return (java.sql.Date) checkOut;
+    public LocalDate getCheckOut() {
+        return checkOut;
     }
 
-    public void setCheckOut(Date checkOut) {
+    public void setCheckOut(LocalDate checkOut) {
         this.checkOut = checkOut;
     }
 
@@ -70,12 +86,12 @@ public class Reservation implements Idable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Reservation that = (Reservation) o;
-        return id == that.id && Objects.equals(userId, that.userId) && Objects.equals(roomId, that.roomId) && Objects.equals(checkIn, that.checkIn) && Objects.equals(checkOut, that.checkOut);
+        return id == that.id && Objects.equals(userId, that.userId) && Objects.equals(checkIn, that.checkIn) && Objects.equals(checkOut, that.checkOut) && username.equals(that.username);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, userId, roomId, checkIn, checkOut);
+        return Objects.hash(id, userId, checkIn, checkOut, username);
     }
 
     @Override
@@ -83,14 +99,13 @@ public class Reservation implements Idable {
         return "Reservation{" +
                 "id=" + id +
                 ", userId=" + userId +
-                ", roomId=" + roomId +
                 ", checkIn=" + checkIn +
                 ", checkOut=" + checkOut +
+                ", username=" + username +
                 '}';
     }
 
 
-    public void setRoomId(Object room_id) {
-    }
+
 }
 
