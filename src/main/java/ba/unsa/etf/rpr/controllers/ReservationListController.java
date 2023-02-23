@@ -4,7 +4,6 @@ import ba.unsa.etf.rpr.Business.ReservationManager;
 import ba.unsa.etf.rpr.Business.RoomBungManager;
 import ba.unsa.etf.rpr.Domain.Reservation;
 import ba.unsa.etf.rpr.Domain.User;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,7 +15,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -27,8 +25,6 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
-
-import static org.apache.commons.lang3.StringUtils.valueOf;
 
 /**
  * The type List of reservations controller.
@@ -161,7 +157,7 @@ public class ReservationListController {
             stage.close();
             // Open the about us page window
             try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/Home/AboutCamp.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Home/AboutCamp.fxml"));
                 AboutCampController controller = new AboutCampController();
                 controller.setUser(user);
                 fxmlLoader.setController(controller);
@@ -185,8 +181,8 @@ public class ReservationListController {
             try {
                 Stage myProfileStage = new Stage();
                 myProfileStage.initStyle(StageStyle.TRANSPARENT);
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/Home/MyProfile.fxml"));
-                MyProfile controller = new MyProfile(user);
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Home/MyProfile.fxml"));
+                RoomList controller = new RoomList(user);
                 fxmlLoader.setController(controller);
                 Parent root = fxmlLoader.load();
                 Scene scene = new Scene(root);
@@ -204,7 +200,7 @@ public class ReservationListController {
             stage.close();
             // Open the about us page window
             try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/Home/home.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Home/home.fxml"));
                 HomeController controller = new HomeController();
                 controller.setUser(user);
                 fxmlLoader.setController(controller);
@@ -227,7 +223,7 @@ public class ReservationListController {
         stage.close();
         // Open the login window
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/Home/Main.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Home/Main.fxml"));
             Parent root = fxmlLoader.load();
             Stage loginStage = new Stage();
             loginStage.setScene(new Scene(root, Color.TRANSPARENT));
