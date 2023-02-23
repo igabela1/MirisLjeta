@@ -3,6 +3,7 @@ import ba.unsa.etf.rpr.dao.DaoFactory;
 import ba.unsa.etf.rpr.Domain.Reservation;
 import ba.unsa.etf.rpr.Exceptions.Room_BungalowException;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class ReservationManager {
@@ -33,4 +34,5 @@ public class ReservationManager {
     public List<Reservation> getAll() throws Room_BungalowException {
         return DaoFactory.reservationDao().getAll();
     }
+
 }
