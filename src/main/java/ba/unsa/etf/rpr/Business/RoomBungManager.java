@@ -3,7 +3,8 @@ import ba.unsa.etf.rpr.dao.DaoFactory;
         import ba.unsa.etf.rpr.Domain.Room_Bungalow;
         import ba.unsa.etf.rpr.Exceptions.Room_BungalowException;
 
-        import java.util.List;
+import java.sql.SQLException;
+import java.util.List;
 
 public class RoomBungManager {
     public void delete(int RoomId) throws Room_BungalowException {
@@ -18,7 +19,7 @@ public class RoomBungManager {
 
     }
 
-    public Room_Bungalow add(Room_Bungalow r) throws Room_BungalowException {
+    public static Room_Bungalow add(Room_Bungalow r) throws Room_BungalowException {
         return DaoFactory.room_bungalowDao().add(r);
     }
 
@@ -30,7 +31,8 @@ public class RoomBungManager {
         return DaoFactory.room_bungalowDao().update(r);
     }
 
-    public List<Room_Bungalow> getAll() throws Room_BungalowException {
+    public static List<Room_Bungalow> getAll() throws Room_BungalowException {
         return DaoFactory.room_bungalowDao().getAll();
     }
+
 }
