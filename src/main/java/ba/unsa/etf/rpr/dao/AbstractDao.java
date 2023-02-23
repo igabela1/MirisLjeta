@@ -17,6 +17,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
     }
 
     private static void createConnection(){
+        System.out.println("Kreiran");
         if(AbstractDao.connection==null) {
             try {
                 Properties p = new Properties();
@@ -27,29 +28,24 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
                 AbstractDao.connection = DriverManager.getConnection(url, username, password);
             } catch (Exception e) {
                 e.printStackTrace();
-                System.exit(0);
+            }finally {
+                Runtime.getRuntime().addShutdownHook(new Thread(()->{
+
+                    try {
+                        connection.close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+
+                }));
             }
         }
     }
 
     public static Connection getConnection(){
+        System.out.println("get");
         return AbstractDao.connection;
     }
-
-
-
-    public static void closeConnection() {
-        System.out.println("Close connection");
-        if(connection!=null) {
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-                System.out.println("Unable to close connection on database");
-            }
-        }
-    }
-
 
 
     public abstract T row2object(ResultSet rs) throws Room_BungalowException;
@@ -96,8 +92,8 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
             stmt.executeUpdate();
 
             ResultSet rs = stmt.getGeneratedKeys();
-            rs.next(); // we know that there is one key
-            item.setId(rs.getInt(1)); //set id to return it back */
+            rs.next();
+            item.setId(rs.getInt(1));
 
             return item;
         }catch (SQLException e){
