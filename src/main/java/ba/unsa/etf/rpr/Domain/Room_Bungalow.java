@@ -67,4 +67,24 @@ public class Room_Bungalow implements Idable {
                 ", isAvailable=" + isAvailable +
                 ", roomDescription='" + roomDescription + '\'' + '}';
     }
+
+    public void setPrice(int parseInt) {
+    }
+
+    public void setStatus(int i) {
+    }
+
+    public void setCapacity(int parseInt) {
+    }
+
+    public String getType() {
+        return getType();
+    }
+    public char[] getCapacity() {
+        return getCapacity();
+    }
+
+    public char[] getPrice() {
+        return getPrice();
+    }
 }
