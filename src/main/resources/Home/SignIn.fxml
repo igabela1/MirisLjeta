@@ -33,6 +33,7 @@
             <Image url="@../IMG/goBackm.png" />
          </image>
       </ImageView>
+      <Button fx:id="closeButton" layoutX="574.0" layoutY="5.0" mnemonicParsing="false" text="X" />
       
    </children>
 </AnchorPane>
