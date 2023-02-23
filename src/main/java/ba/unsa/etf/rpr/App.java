@@ -73,7 +73,7 @@ public class App {
      * @param args the input arguments
      */
         public static void main( String[] args ) throws Exception, Room_BungalowException {
-            System.out.println("Welcome to Miris Ljeta");
+        /*    System.out.println("Welcome to Miris Ljeta");
             Scanner input =  new Scanner(System.in);
             RoomBungManager bookManager = new RoomBungManager();
             UserManager userManager =  new UserManager();
@@ -291,7 +291,7 @@ public class App {
 
 
 
-            }
+            }*/
         }
 }
 
