@@ -22,7 +22,7 @@ import java.io.IOException;
 /**
  * The type My profile page controller.
  */
-public class MyProfile {
+public class MyProfile{
 
     /**
      * The Root.
@@ -43,7 +43,7 @@ public class MyProfile {
     private User user;
 
     /**
-     * Instantiates a new My profile  controller.
+     * Instantiates a new My profile page controller.
      *
      * @param u the u
      */
@@ -121,7 +121,7 @@ public class MyProfile {
             stage.close();
             // Open the about us page window
             try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/Home/AboutCamp.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Home/AboutCamp.fxml"));
                 Parent root = fxmlLoader.load();
                 Stage aboutUsStage = new Stage();
                 aboutUsStage.initStyle(StageStyle.TRANSPARENT);
@@ -142,7 +142,7 @@ public class MyProfile {
             try {
                 Stage myProfileStage = new Stage();
                 myProfileStage.initStyle(StageStyle.TRANSPARENT);
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/Home/ReservationList.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Home/ReservationList.fxml"));
                 ReservationListController controller = new ReservationListController(user);
                 fxmlLoader.setController(controller);
                 Parent root = fxmlLoader.load();
@@ -163,7 +163,7 @@ public class MyProfile {
         stage.close();
         // Open the login window
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/Home/Main.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Home/Main.fxml"));
             Parent root = fxmlLoader.load();
             Stage loginStage = new Stage();
             loginStage.setScene(new Scene(root, Color.TRANSPARENT));
