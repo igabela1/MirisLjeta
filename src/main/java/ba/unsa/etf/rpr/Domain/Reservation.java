@@ -57,13 +57,12 @@ public class Reservation implements Idable {
     }
 
 
-    //public int getRoomId() {
-      //  return roomId;
-    //}
-
-    //public void setRoomId(int roomId) {
-      //  this.roomId = roomId;
-    //}
+    public int getRoomId() {
+       return roomId;
+    }
+    public void setRoomId(int roomId) {
+        this.roomId = roomId;
+    }
 
     public LocalDate getCheckIn() {
         return  checkIn;
@@ -104,6 +103,7 @@ public class Reservation implements Idable {
                 ", username=" + username +
                 '}';
     }
+
 
 
 
