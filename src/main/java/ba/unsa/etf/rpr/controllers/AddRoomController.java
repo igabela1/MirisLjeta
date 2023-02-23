@@ -1,8 +1,6 @@
 package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.Domain.Room_Bungalow;
-import ba.unsa.etf.rpr.Business.RoomBungManager;
-import ba.unsa.etf.rpr.Domain.Room_Bungalow;
 import ba.unsa.etf.rpr.Exceptions.Room_BungalowException;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -81,6 +79,10 @@ public class AddRoomController {
     public void saveRoom(){
         room.setPrice(Integer.parseInt(priceField.getText()));
         room.setStatus(1);
+        System.out.println(typeComboBox.getValue());
+        System.out.println(room.toString());
+        okClicked = true;
+        // close the dialog
         ((Stage) saveButton.getScene().getWindow()).close();
     }
 
@@ -91,6 +93,7 @@ public class AddRoomController {
     public void cancelRoom() {
         ((Stage) cancelButton.getScene().getWindow()).close();
     }
+
 
     private class Room_BungalowExceptionn extends Exception {
     }
