@@ -114,7 +114,7 @@ public class HomeController {
             stage.close();
             // Open the about us page window
             try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/Home/MyProfile.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Home/MyProfile.fxml"));
                // ListOfReservationsPageController controller = new ListOfReservationsPageController(user);
                 //fxmlLoader.setController(controller);
                 Parent root = fxmlLoader.load();
