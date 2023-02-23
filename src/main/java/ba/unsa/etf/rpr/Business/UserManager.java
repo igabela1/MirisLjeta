@@ -20,7 +20,7 @@ public class UserManager {
 
     }
 
-    public User add(User r) throws Room_BungalowException {
+    public static User add(User r) throws Room_BungalowException {
         return DaoFactory.userDao().add(r);
     }
 
@@ -32,7 +32,7 @@ public class UserManager {
         return DaoFactory.userDao().update(r);
     }
 
-    public List<User> getAll() throws Room_BungalowException {
+    public static List<User> getAll() throws Room_BungalowException {
         return DaoFactory.userDao().getAll();
     }
 
