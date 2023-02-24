@@ -28,18 +28,13 @@ public class MyProfile{
      * The Root.
      */
     public Pane root;
-    /**
-     * The About us button.
-     */
-    public Button aboutUsButton;
+
     /**
      * The Log out button.
      */
     public ImageView logOutButton;
-    /**
-     * The Reservations button.
-     */
-    public Button reservationsButton;
+
+
     private User user;
 
     /**
@@ -115,46 +110,9 @@ public class MyProfile{
         closeButton.setOnMouseEntered(this::closeButtonMouseEntered);
         closeButton.setOnMouseExited(this::closeButtonMouseExited);
 
-        aboutUsButton.setOnAction(event -> {
-            // Close the current window
-            Stage stage = (Stage) aboutUsButton.getScene().getWindow();
-            stage.close();
-            // Open the about us page window
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Home/AboutCamp.fxml"));
-                Parent root = fxmlLoader.load();
-                Stage aboutUsStage = new Stage();
-                aboutUsStage.initStyle(StageStyle.TRANSPARENT);
-                Scene scene = new Scene(root);
-                scene.setFill(Color.TRANSPARENT);
-                aboutUsStage.setScene(scene);
-                aboutUsStage.show();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
 
-        reservationsButton.setOnAction(event -> {
-            // Close the current window
-            Stage stage = (Stage) reservationsButton.getScene().getWindow();
-            stage.close();
-            // Open the "my profile" page window
-            try {
-                Stage myProfileStage = new Stage();
-                myProfileStage.initStyle(StageStyle.TRANSPARENT);
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Home/ReservationList.fxml"));
-                ReservationListController controller = new ReservationListController(user);
-                fxmlLoader.setController(controller);
-                Parent root = fxmlLoader.load();
 
-                Scene scene = new Scene(root);
-                scene.setFill(Color.TRANSPARENT);
-                myProfileStage.setScene(scene);
-                myProfileStage.show();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
+
     }
 
     private void logOut() {
