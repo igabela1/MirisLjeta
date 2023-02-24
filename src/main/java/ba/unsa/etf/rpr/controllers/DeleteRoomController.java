@@ -63,7 +63,7 @@ public class DeleteRoomController {
     }
 
     @FXML
-    private void DeleteRoom(){
+    private void handleDeleteRoom(){
         selectedRoom = roomsComboBox.getSelectionModel().getSelectedItem();
         if (selectedRoom != null) {
             okClicked = true;
