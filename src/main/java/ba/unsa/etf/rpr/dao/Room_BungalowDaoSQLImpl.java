@@ -14,7 +14,7 @@ import java.util.TreeMap;
 public class Room_BungalowDaoSQLImpl extends AbstractDao<Room_Bungalow> implements Room_BungalowDao {
     private static Room_BungalowDaoSQLImpl instance = null;
     private Room_BungalowDaoSQLImpl() {
-        super("ROOMS");
+        super("ROOMSBUNGALOWS");
     }
 
 
