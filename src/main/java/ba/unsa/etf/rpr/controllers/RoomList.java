@@ -27,17 +27,13 @@ public class RoomList {
      * The Root.
      */
     public Pane root;
+
+    public Button reserveButton;
     /**
-     * The About us button.
+     * The Sign out button.
      */
-    public Button aboutUsButton;
-    /**
-     * The Log out button.
-     */
-    public ImageView logOutButton;
-    /**
-     * The Reservations button.
-     */
+    public ImageView signOut;
+
     public Button reservationsButton;
     private User user;
 
@@ -103,7 +99,7 @@ public class RoomList {
      */
     public void initialize() {
 
-        logOutButton.setOnMouseClicked(event -> logOut());
+        signOut.setOnMouseClicked(event -> logOut());
 
         firstNameLabel.setText(user.getFirstName());
         lastNameLabel.setText(user.getLastName());
@@ -114,13 +110,13 @@ public class RoomList {
         closeButton.setOnMouseEntered(this::closeButtonMouseEntered);
         closeButton.setOnMouseExited(this::closeButtonMouseExited);
 
-        aboutUsButton.setOnAction(event -> {
+        reserveButton.setOnAction(event -> {
             // Close the current window
-            Stage stage = (Stage) aboutUsButton.getScene().getWindow();
+            Stage stage = (Stage) reserveButton.getScene().getWindow();
             stage.close();
             // Open the about us page window
             try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Home/AboutCamp.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Home/ReservationList.fxml"));
                 Parent root = fxmlLoader.load();
                 Stage aboutUsStage = new Stage();
                 aboutUsStage.initStyle(StageStyle.TRANSPARENT);
@@ -133,32 +129,12 @@ public class RoomList {
             }
         });
 
-        reservationsButton.setOnAction(event -> {
-            // Close the current window
-            Stage stage = (Stage) reservationsButton.getScene().getWindow();
-            stage.close();
-            // Open the "my profile" page window
-            try {
-                Stage myProfileStage = new Stage();
-                myProfileStage.initStyle(StageStyle.TRANSPARENT);
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Home/ReservationList.fxml"));
-                ReservationListController controller = new ReservationListController(user);
-                fxmlLoader.setController(controller);
-                Parent root = fxmlLoader.load();
 
-                Scene scene = new Scene(root);
-                scene.setFill(Color.TRANSPARENT);
-                myProfileStage.setScene(scene);
-                myProfileStage.show();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
     }
 
     private void logOut() {
         // Close the current window
-        Stage stage = (Stage) logOutButton.getScene().getWindow();
+        Stage stage = (Stage) signOut.getScene().getWindow();
         stage.close();
         // Open the login window
         try {
