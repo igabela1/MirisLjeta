@@ -51,13 +51,12 @@
       </Label>
       <Button fx:id="aboutUsButton" layoutX="14.0" layoutY="358.0" mnemonicParsing="false" text="About Us" />
       <Button fx:id="myProfileButton" layoutX="105.0" layoutY="358.0" mnemonicParsing="false" text="My profile" />
-      <Button fx:id="homeButton" layoutX="204.0" layoutY="358.0" mnemonicParsing="false" text="Book a room" />
       <ImageView fx:id="logOutButton" fitHeight="45.0" fitWidth="35.0" layoutX="551.0" layoutY="350.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../IMG/logout1.png" />
          </image>
       </ImageView>
-      <Button layoutX="311.0" layoutY="358.0" mnemonicParsing="false" text="Reservations" />
+      <Button layoutX="209.0" layoutY="358.0" mnemonicParsing="false" text="Reservations" />
       <Button fx:id="closeButton" layoutX="570.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="30.0" text="X">
          <font>
             <Font size="13.0" />
