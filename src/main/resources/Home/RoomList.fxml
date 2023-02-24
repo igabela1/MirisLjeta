@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-        <?import javafx.scene.control.Button?>
-        <?import javafx.scene.control.ButtonBar?>
-        <?import javafx.scene.control.DatePicker?>
-        <?import javafx.scene.image.Image?>
-        <?import javafx.scene.image.ImageView?>
-        <?import javafx.scene.layout.AnchorPane?>
-        <?import javafx.scene.layout.VBox?>
-        <?import javafx.scene.text.Font?>
-        <?import javafx.scene.text.Text?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.controllers.RoomList">
 <children>
@@ -28,7 +28,7 @@
             <Button fx:id="bookBungallows" mnemonicParsing="false" prefHeight="26.0" prefWidth="102.0" text="Bungallows" />
             <Button fx:id="bookRooms" mnemonicParsing="false" prefHeight="26.0" prefWidth="104.0" text="Rooms" />
             <Button fx:id="bookBoat" mnemonicParsing="false" prefHeight="26.0" prefWidth="103.0" text="Boats" />
-            <Button fx:id="orderFood" mnemonicParsing="false" prefHeight="26.0" prefWidth="101.0" text="Food" />
+            <Button fx:id="bookFood" mnemonicParsing="false" prefHeight="26.0" prefWidth="101.0" text="Food" />
         </children>
     </VBox>
     <VBox layoutX="259.0" layoutY="133.0" prefHeight="119.0" prefWidth="175.0">
