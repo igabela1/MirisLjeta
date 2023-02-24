@@ -22,6 +22,7 @@ import javafx.util.Duration;
 import java.awt.*;
 import java.io.FileReader;
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Objects;
@@ -50,52 +51,31 @@ public class SignUp extends Component {
     public Label badPassword;
 
 
-     
-    public void initialize() {
-        goBack.setOnMouseClicked(event -> {
-            // Close current window
-            Stage stage = (Stage) goBack.getScene().getWindow();
-            stage.close();
-            // Open previous window
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Home/home.fxml"));
-                Parent root = fxmlLoader.load();
-                Stage homeStage = new Stage();
-                homeStage.setScene(new Scene(root));
-                homeStage.show();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-        // Add an event listener to the name field
+
+    public void initialize(){
         name.textProperty().addListener((observable, oldValue, newValue) -> {
-            // Clear the error message when the name field is changed
+
             badName.setText("");
         });
-        // Add an event listener to the surname field
+
         surname.textProperty().addListener((observable, oldValue, newValue) -> {
-            // Clear the error message when the surname field is changed
             badSurname.setText("");
         });
-        // Add an event listener to the username field
+
         username.textProperty().addListener((observable, oldValue, newValue) -> {
-            // Clear the error message when the username field is changed
             badUsername.setText("");
         });
-        // Add an event listener to the password field
         password.textProperty().addListener((observable, oldValue, newValue) -> {
-            // Clear the error message when the password field is changed
             badPassword.setText("");
         });
-        // Add an event listener to the email field
+
         email.textProperty().addListener((observable, oldValue, newValue) -> {
-            // Clear the error message when the email field is changed
             badEmail.setText("");
         });
     }
 
     @FXML
-    private void signUpButtonAction() {
+    private void signUpButtonActionPerformed() throws NoSuchAlgorithmException {
 
         // Retrieve user input from form fields
         String nameInput = name.getText();
@@ -143,12 +123,11 @@ public class SignUp extends Component {
         if (!check) {
             // Create a new user data object and set the instance variables
             User user = new User();
-            // user.setFirstName(nameInput);
-            // user.setLastName(surnameInput);
+            user.setFirstName(nameInput);
+            user.setLastName(surnameInput);
             user.setEmail(emailInput);
             user.setUsername(usernameInput);
-            user.setPassword(passwordInput);
-            //UserDaoSQLImpl u = new UserDaoSQLImpl();
+            user.setPassword(UserManager.hashPassword(passwordInput));
 
             try {
                 FileReader reader = new FileReader("src/main/resources/db.properties");
@@ -158,41 +137,35 @@ public class SignUp extends Component {
                 Connection connection = DriverManager.getConnection(s3, s1, s2);
 
                 // Add the new user to the database
-                //User insertedUser = u.add(user);
+                User insertedUser = u.add(user);
 
                 // Check if the user object was returned by the add User method from UserDaoSQLImpl.java
-                //  if (insertedUser != null) {
-                // Show a success message
-                //    showPopupBox("User registered successfully!");
-                //} else {
-                // Show an error message
-                //  showPopupBox("Error registering user. Please try again.");
-                //}
+                if (insertedUser != null) {
+                    // Show a success message
+                    showPopupBox("User registered successfully!");
+                } else {
+                    // Show an error message
+                    showPopupBox("Error registering user. Please try again.");
+                }
 
                 // Close the connection to the database
                 connection.close();
 
             } catch (Exception exc) {
                 exc.printStackTrace();
-
+            } catch (Room_BungalowException e) {
+                throw new RuntimeException(e);
             }
         }
     }
-}
 
 
-
-
-    /**
-     Displays a pop-up box with the given message.
-    // @param message the message to display in the pop-up box
-     */
-  /*  public void showPopupBox(String message) {
+    public void showPopupBox(String message) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/main/PopupBox.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Home/PopupBox.fxml"));
             Parent root = fxmlLoader.load();
-            //PopupBoxController controller = fxmlLoader.getController();
-           // controller.setMessage(message);
+            PopupBoxController controller = fxmlLoader.getController();
+            controller.setMessage(message);
             Stage stage = new Stage();
             stage.initStyle(StageStyle.TRANSPARENT);
             stage.setAlwaysOnTop(true);
@@ -200,21 +173,9 @@ public class SignUp extends Component {
 
             stage.show();
 
-            // Add a slide animation to the popup box
-            TranslateTransition transition = new TranslateTransition(Duration.seconds(0.6), root);
-            transition.setFromY(root.getLayoutY() + root.getLayoutBounds().getHeight());
-            transition.setToY(root.getLayoutY());
-            transition.play();
-
-            // Close the popup box after 2 seconds
-            Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(2), event -> stage.close()));
-
-            timeline.play();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-*/
-
-
+}
