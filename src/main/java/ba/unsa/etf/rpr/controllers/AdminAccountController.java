@@ -16,11 +16,13 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+
 import java.io.IOException;
 /**
  * The type Account admin page controller.
  */
 public class AdminAccountController {
+
     /**
      * The Home button.
      */
@@ -60,18 +62,12 @@ public class AdminAccountController {
 
     private User user;
 
-    /**
-     * Instantiates a new Account admin page controller.
-     *
-     * @param u the u
-     */
+
     public AdminAccountController(User u){
         this.user = u;
     }
 
-    /**
-     * Instantiates a new Account admin page controller.
-     */
+
     public AdminAccountController(){}
 
     @FXML
@@ -117,12 +113,32 @@ public class AdminAccountController {
         usernameField.setText(user.getUsername());
 
         logOutButton.setOnMouseClicked(this::logOut);
+        homeButton.setOnMouseClicked(this::handleHome);
 
         closeButton.setOnAction(this::closeButtonAction);
         closeButton.setOnMouseEntered(this::closeButtonMouseEntered);
         closeButton.setOnMouseExited(this::closeButtonMouseExited);
     }
-
+    public void handleHome(MouseEvent mouseEvent) {
+        // Close the current window
+        Stage stage = (Stage) homeButton.getScene().getWindow();
+        stage.close();
+        // Open the home page window
+        try {
+            Stage myProfileStage = new Stage();
+            myProfileStage.initStyle(StageStyle.TRANSPARENT);
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Admin/AdminAccount.fxml"));
+            AdminAccountController controller = new AdminAccountController();
+            controller.setUser(user);
+            fxmlLoader.setController(controller);
+            Parent root = fxmlLoader.load();
+            Scene scene = new Scene(root);
+            myProfileStage.setScene(scene);
+            myProfileStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
     private void logOut(MouseEvent event) {
@@ -134,7 +150,7 @@ public class AdminAccountController {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Home/home.fxml"));
             Parent root = fxmlLoader.load();
             Stage loginStage = new Stage();
-        //    loginStage.getIcons().add(new Image("images.png"));
+
             loginStage.setScene(new Scene(root, Color.TRANSPARENT));
             loginStage.initStyle(StageStyle.TRANSPARENT);
             loginStage.show();
