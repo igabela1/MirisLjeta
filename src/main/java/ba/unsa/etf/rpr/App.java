@@ -73,7 +73,7 @@ public class App {
      * @param args the input arguments
      */
         public static void main( String[] args ) throws Exception, Room_BungalowException {
-        /*    System.out.println("Welcome to Miris Ljeta");
+          System.out.println("Welcome to Miris Ljeta");
             Scanner input =  new Scanner(System.in);
             RoomBungManager bookManager = new RoomBungManager();
             UserManager userManager =  new UserManager();
@@ -86,7 +86,7 @@ public class App {
                 System.out.println("5 - Close the application");
                 int option = input.nextInt();
                 if(option == 1) {
-                    List<User> users = FXCollections.observableList(userManager.getAll());
+                    List<User> users = FXCollections.observableList(UserManager.getAll());
                     String username = "", password=" ";
                     Scanner input4 = new Scanner(System.in);
                     System.out.println("Enter username");
@@ -291,7 +291,7 @@ public class App {
 
 
 
-            }*/
+            }
         }
 }
 
