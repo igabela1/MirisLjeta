@@ -12,8 +12,10 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import javafx.scene.image.ImageView;
 import java.io.IOException;
 public class HomeController {
+
 
 
     @FXML
@@ -29,9 +31,23 @@ public class HomeController {
     private Button bookButton = new Button();
     @FXML
     public Button reservationsButton;
-
+    private User user = new User();
+    @FXML
+    public void setUser(User user) {
+        this.user = user;
+    }
+    @FXML
+    public User getUser() {
+        return user;
+    }
    public HomeController() {
     }
+    public HomeController(User finalUser){
+        this.user = finalUser;
+    }
+
+
+
     @FXML
     public void initialize() {
         aboutUsButton.setOnAction(event -> {
@@ -108,14 +124,14 @@ public class HomeController {
                 e.printStackTrace();
             }
         });
-        reservationsButton.setOnAction(event -> {
+       /*// reservationsButton.setOnAction(event -> {
             // Close the current window
-            Stage stage = (Stage) reservationsButton.getScene().getWindow();
-            stage.close();
+         //   Stage stage = (Stage) reservationsButton.getScene().getWindow();
+           // stage.close();
             // Open the about us page window
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Home/MyProfile.fxml"));
-               // ListOfReservationsPageController controller = new ListOfReservationsPageController(user);
+               // ReservationListController controller = new ReservationListController(user);
                 //fxmlLoader.setController(controller);
                 Parent root = fxmlLoader.load();
                 Stage stage2 = new Stage();
@@ -125,13 +141,12 @@ public class HomeController {
                 scene.setFill(Color.TRANSPARENT);
                 stage2.setScene(scene);
                 stage2.show();
-                stage.hide();
+              //  stage.hide();
             } catch (IOException e) {
                 e.printStackTrace();
-            }
-        });
-    }
-
-    public void setUser(User user) {
-    }
+            }*/
+        }
 }
+
+
+
