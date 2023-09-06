@@ -9,7 +9,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -32,7 +31,9 @@ public class RoomList {
     /**
      * The Sign out button.
      */
-    public ImageView signOut;
+
+    @FXML
+    public Button signOut;
 
     public Button reservationsButton;
     private User user;
@@ -116,7 +117,7 @@ public class RoomList {
             stage.close();
             // Open the about us page window
             try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/fxml/Home/ReservationList.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/fxml/ReservationList.fxml"));
                 Parent root = fxmlLoader.load();
                 Stage aboutUsStage = new Stage();
                 aboutUsStage.initStyle(StageStyle.TRANSPARENT);
@@ -138,7 +139,7 @@ public class RoomList {
         stage.close();
         // Open the login window
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/fxml/Home/Main.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/fxml/Home.fxml"));
             Parent root = fxmlLoader.load();
             Stage loginStage = new Stage();
             loginStage.setScene(new Scene(root, Color.TRANSPARENT));
