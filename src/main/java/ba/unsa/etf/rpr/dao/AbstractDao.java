@@ -1,21 +1,20 @@
 package ba.unsa.etf.rpr.dao;
 import ba.unsa.etf.rpr.exceptions.Room_BungalowException;
 import ba.unsa.etf.rpr.domain.Idable;
-
 import java.sql.*;
 import java.util.*;
 
 
 public abstract class AbstractDao<T extends Idable> implements Dao<T>{
     private static Connection connection = null;
-    private String tableName;
+    private final String tableName;
 
     public AbstractDao(String tableName) {
         this.tableName = tableName;
-        if(connection==null) createConnection();
+        createConnection();
     }
 
-    private static void createConnection(){
+    private void createConnection(){
         System.out.println("Kreiran");
         if(AbstractDao.connection==null) {
             try {
@@ -27,15 +26,14 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
                 AbstractDao.connection = DriverManager.getConnection(url, username, password);
             } catch (Exception e) {
                 e.printStackTrace();
-            }finally {
+            }
+            finally {
                 Runtime.getRuntime().addShutdownHook(new Thread(()->{
-
                     try {
                         connection.close();
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
-
                 }));
             }
         }
@@ -46,9 +44,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
         return AbstractDao.connection;
     }
 
-
     public abstract T row2object(ResultSet rs) throws Room_BungalowException;
-
 
     public abstract Map<String, Object> object2row(T object);
 
@@ -74,6 +70,10 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
     public T add(T item) throws Room_BungalowException{
         Map<String, Object> row = object2row(item);
         Map.Entry<String, String> columns = prepareInsertParts(row);
+
+        System.out.println(tableName);
+        System.out.println(columns.getKey());
+        System.out.println(columns.getValue());
 
         StringBuilder builder = new StringBuilder();
         builder.append("INSERT INTO ").append(tableName);
