@@ -157,7 +157,7 @@ public class ReservationListController {
             stage.close();
             // Open the about us page window
             try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Home/AboutCamp.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/fxml/Home/AboutCamp.fxml"));
                 AboutCampController controller = new AboutCampController();
                 controller.setUser(user);
                 fxmlLoader.setController(controller);
@@ -181,7 +181,7 @@ public class ReservationListController {
             try {
                 Stage myProfileStage = new Stage();
                 myProfileStage.initStyle(StageStyle.TRANSPARENT);
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Home/MyProfile.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/fxml/Home/MyProfile.fxml"));
                 RoomList controller = new RoomList(user);
                 fxmlLoader.setController(controller);
                 Parent root = fxmlLoader.load();
@@ -200,7 +200,7 @@ public class ReservationListController {
             stage.close();
             // Open the about us page window
             try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Home/home.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/fxml/Home/home.fxml"));
                 HomeController controller = new HomeController();
                 controller.setUser(user);
                 fxmlLoader.setController(controller);
@@ -223,7 +223,7 @@ public class ReservationListController {
         stage.close();
         // Open the login window
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Home/Main.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/fxml/Home/Main.fxml"));
             Parent root = fxmlLoader.load();
             Stage loginStage = new Stage();
             loginStage.setScene(new Scene(root, Color.TRANSPARENT));
