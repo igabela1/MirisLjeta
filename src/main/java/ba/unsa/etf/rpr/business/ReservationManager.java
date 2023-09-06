@@ -32,10 +32,12 @@ public class ReservationManager {
         return DaoFactory.reservationDao().update(r);
     }
 
-    public List<Reservation> getAll() throws Room_BungalowException {
+    public static List<Reservation> getAll() throws Room_BungalowException {
         return DaoFactory.reservationDao().getAll();
     }
-
+    public int totalIncome() throws SQLException{
+        return DaoFactory.reservationDao().totalIncome();
+    }
     public List<Reservation> getAllForUser(User user) throws SQLException{
         return DaoFactory.reservationDao().getAllForUser(user);
     }
