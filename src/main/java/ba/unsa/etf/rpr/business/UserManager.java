@@ -1,7 +1,7 @@
 package ba.unsa.etf.rpr.business;
 import ba.unsa.etf.rpr.dao.DaoFactory;
-import ba.unsa.etf.rpr.domain.User;
-import ba.unsa.etf.rpr.exceptions.Room_BungalowException;
+        import ba.unsa.etf.rpr.domain.User;
+        import ba.unsa.etf.rpr.exceptions.Room_BungalowException;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
