@@ -1,160 +1,113 @@
 package ba.unsa.etf.rpr.controllers;
 
+import ba.unsa.etf.rpr.business.ReservationManager;
+import ba.unsa.etf.rpr.business.RoomBungManager;
+import ba.unsa.etf.rpr.business.UserManager;
+import ba.unsa.etf.rpr.domain.Reservation;
+import ba.unsa.etf.rpr.domain.Room_Bungalow;
 import ba.unsa.etf.rpr.domain.User;
-import javafx.event.ActionEvent;
+import ba.unsa.etf.rpr.exceptions.Room_BungalowException;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
+import java.time.LocalDate;
+import java.util.List;
 
-import java.io.IOException;
-/**
- * The type Account admin page controller.
- */
 public class AdminAccountController {
 
-    /**
-     * The Home button.
-     */
-    @FXML
-    public Button homeButton;
-    /**
-     * The Close button.
-     */
-    @FXML
-    public Button closeButton;
-
-    /**
-     * The Log out button.
-     */
-    @FXML
-    public ImageView logOutButton;
-    /**
-     * The Name field.
-     */
-    @FXML
-    public Label nameField = new Label();
-    /**
-     * The Surname field.
-     */
-    @FXML
-    public Label surnameField = new Label();
-    /**
-     * The Username field.
-     */
-    @FXML
-    public Label usernameField = new Label();
-    /**
-     * The Email field.
-     */
-    @FXML
-    public Label emailField = new Label();
-
-    private User user;
-
-
+    @FXML private Button myProfileButton;
+    @FXML private ImageView logOutButton;
+    public TableView<User> usersTable;
+    public TableView<Room_Bungalow> roomsTable;
+    public TableView<Reservation> reservationsTable;
+    public TableColumn<User, Integer> idUserColumn;
+    public TableColumn<User, String> firstNameColumn;
+    public TableColumn<User, String> lastNameColumn;
+    public TableColumn<User, String> emailColumn;
+    public TableColumn<User, String> usernameColumn;
+    public TableColumn<Room_Bungalow, Integer> idRoomColumn;
+    public TableColumn<Room_Bungalow, Double> pricePerNightColumn;
+    public TableColumn<Room_Bungalow, Integer> capacityColumn;
+    public TableColumn<Room_Bungalow, Boolean> statusColumn;
+    public TableColumn<Reservation, Integer> reservationIdColumn;
+    public TableColumn<Reservation, LocalDate> checkInColumn;
+    public TableColumn<Reservation, LocalDate> checkOutColumn;
+    public TableColumn<Reservation, Integer> roomIdColumn;
+    public TableColumn<Reservation, Double> totalColumn;
+    public TableColumn<Reservation, String> userColumn;
+    private final User user;
     public AdminAccountController(User u){
         this.user = u;
     }
-
-
-    public AdminAccountController(){}
-
-    @FXML
-    private void closeButtonAction(ActionEvent event) {
-        ((Node)(event.getSource())).getScene().getWindow().hide();
-    }
-    @FXML
-    private void closeButtonMouseExited(MouseEvent mouseEvent){ closeButton.getStyleClass().remove("closeButtonWhenHovered"); }
-    @FXML
-    private void closeButtonMouseEntered(MouseEvent mouseEvent) {
-        closeButton.getStyleClass().add("closeButtonStyle");
-        closeButton.getStyleClass().add("closeButtonWhenHovered");
-    }
-
-    /**
-     * Sets user.
-     *
-     * @param user the user
-     */
-    @FXML
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    /**
-     * Gets user.
-     *
-     * @return the user
-     */
-    @FXML
-    public User getUser() {
-        return user;
-    }
-
-    /**
-     * Initialize.
-     */
+    private final Utils utils = new Utils();
     public void initialize() {
 
-        nameField.setText(user.getFirstName());
-        surnameField.setText(user.getLastName());
-        emailField.setText(user.getEmail());
-        usernameField.setText(user.getUsername());
+        System.out.println("usla u admin account controller");
 
-        logOutButton.setOnMouseClicked(this::logOut);
-        homeButton.setOnMouseClicked(this::handleHome);
+        myProfileButton.setOnMouseClicked(event -> utils.changeWindow(myProfileButton, "My Profile", "/fxml/MyProfile.fxml", new MyProfileController(user)));
 
-        closeButton.setOnAction(this::closeButtonAction);
-        closeButton.setOnMouseEntered(this::closeButtonMouseEntered);
-        closeButton.setOnMouseExited(this::closeButtonMouseExited);
-    }
-    public void handleHome(MouseEvent mouseEvent) {
-        // Close the current window
-        Stage stage = (Stage) homeButton.getScene().getWindow();
-        stage.close();
-        // Open the home page window
-        try {
-            Stage myProfileStage = new Stage();
-            myProfileStage.initStyle(StageStyle.TRANSPARENT);
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/fxml/Admin/AdminAccount.fxml"));
-            AdminAccountController controller = new AdminAccountController();
-            controller.setUser(user);
-            fxmlLoader.setController(controller);
-            Parent root = fxmlLoader.load();
-            Scene scene = new Scene(root);
-            myProfileStage.setScene(scene);
-            myProfileStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        System.out.println("prosla my profile button");
+
+        logOutButton.setOnMouseClicked(event -> utils.changeWindow(logOutButton, "Main Page", "/fxml/Home.fxml", new HomeController()));
+
+        System.out.println("pred tabele sam");
+
+        idUserColumn.setCellValueFactory(new PropertyValueFactory<User, Integer>("id"));
+        firstNameColumn.setCellValueFactory(new PropertyValueFactory<User, String>("firstName"));
+        lastNameColumn.setCellValueFactory(new PropertyValueFactory<User, String>("lastName"));
+        emailColumn.setCellValueFactory(new PropertyValueFactory<User, String>("email"));
+        usernameColumn.setCellValueFactory(new PropertyValueFactory<User, String>("username"));
+        idRoomColumn.setCellValueFactory(new PropertyValueFactory<Room_Bungalow, Integer>("id"));
+        pricePerNightColumn.setCellValueFactory(new PropertyValueFactory<Room_Bungalow, Double>("pricePerNight"));
+        capacityColumn.setCellValueFactory(new PropertyValueFactory<Room_Bungalow, Integer>("capacity"));
+        statusColumn.setCellValueFactory(new PropertyValueFactory<Room_Bungalow, Boolean>("status"));
+        reservationIdColumn.setCellValueFactory(new PropertyValueFactory<Reservation, Integer>("id"));
+        checkInColumn.setCellValueFactory(new PropertyValueFactory<Reservation, LocalDate>("checkIn"));
+        checkOutColumn.setCellValueFactory(new PropertyValueFactory<Reservation, LocalDate>("checkOut"));
+        roomIdColumn.setCellValueFactory(new PropertyValueFactory<Reservation, Integer>("roomID"));
+        totalColumn.setCellValueFactory(new PropertyValueFactory<Reservation, Double>("total"));
+        userColumn.setCellValueFactory(new PropertyValueFactory<Reservation, String>("userID"));
+
+        System.out.println("nakon kolona sam a prije refresh tables");
+
+        refreshTables();
     }
 
-
-    private void logOut(MouseEvent event) {
-        // Close the current window
-        Stage stage = (Stage) logOutButton.getScene().getWindow();
-        stage.close();
-        // Open the login window
+    /**
+     * fetch data from DB
+     */
+    void refreshTables() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/fxml/Home/home.fxml"));
-            Parent root = fxmlLoader.load();
-            Stage loginStage = new Stage();
+            System.out.println("usla u refresh tables");
 
-            loginStage.setScene(new Scene(root, Color.TRANSPARENT));
-            loginStage.initStyle(StageStyle.TRANSPARENT);
-            loginStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
+            // Fetch data from your data source (e.g., UserManager, RoomManager and ReservationManager)
+            List<User> userList = UserManager.getAll();
+            List<Room_Bungalow> roomList = RoomBungManager.getAll();
+            List<Reservation> reservationList = ReservationManager.getAll();
+
+            System.out.println("prikupila podatke od userlist i ostalih listi");
+            System.out.println(userList.toString());
+            System.out.println(roomList.toString());
+            System.out.println(reservationList.toString());
+
+            // Update the table views with the new data
+            usersTable.setItems(FXCollections.observableList(userList));
+            roomsTable.setItems(FXCollections.observableList(roomList));
+            reservationsTable.setItems(FXCollections.observableList(reservationList));
+
+            System.out.println("updateovala tabele");
+
+            // Refresh the table views to update the UI
+            usersTable.refresh();
+            roomsTable.refresh();
+            reservationsTable.refresh();
+
+            System.out.println("refreshala tabele");
+        } catch (Room_BungalowException e) {
+            throw new RuntimeException(e);
         }
     }
 }
