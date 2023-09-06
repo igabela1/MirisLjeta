@@ -120,7 +120,7 @@ public class MyProfile{
         stage.close();
         // Open the login window
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Home/Main.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/fxml/Home/Main.fxml"));
             Parent root = fxmlLoader.load();
             Stage loginStage = new Stage();
             loginStage.setScene(new Scene(root, Color.TRANSPARENT));
