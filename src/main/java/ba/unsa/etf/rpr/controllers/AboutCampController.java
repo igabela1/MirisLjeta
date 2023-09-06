@@ -31,7 +31,7 @@ public class AboutCampController {
             stage.close();
             // Open previous window
             try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Home/home.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/fxml/Home/home.fxml"));
                 HomeController controller = new HomeController();
                 controller.setUser(user);
                 fxmlLoader.setController(controller);
