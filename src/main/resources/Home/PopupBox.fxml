@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #13b92c;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.controllers.PopupBoxController">
-    <Label fx:id="messageLabel" alignment="CENTER" layoutX="-7.0" layoutY="-6.0" prefHeight="63.0" prefWidth="213.0" text="Message" textAlignment="CENTER" textFill="WHITE" />
-</AnchorPane>

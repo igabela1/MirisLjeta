@@ -39,7 +39,7 @@ public class MainController implements Initializable {
         t.play();
         t.setOnFinished((e)->{
             try{
-                fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/Home/SignIn.fxml")));
+                fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/fxml/Home/SignIn.fxml")));
                 vbox.getChildren().removeAll();
                 vbox.getChildren().setAll(fxml);
             }catch(IOException ex){
@@ -62,7 +62,7 @@ public class MainController implements Initializable {
         t.play();
         t.setOnFinished((e) ->{
             try{
-                fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/Home/SignIn.fxml")));
+                fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/fxml/Home/SignIn.fxml")));
                 vbox.getChildren().removeAll();
                 vbox.getChildren().setAll(fxml);
             }catch(IOException ex){
@@ -79,7 +79,7 @@ public class MainController implements Initializable {
         t.play();
         t.setOnFinished((e) ->{
             try{
-                fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/Home/SignUp.fxml")));
+                fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/fxml/Home/SignUp.fxml")));
                 vbox.getChildren().removeAll();
                 vbox.getChildren().setAll(fxml);
             }catch(IOException ex){
