@@ -157,7 +157,7 @@ public class SignUp extends Component {
 
     public void showPopupBox(String message) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Home/PopupBox.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/fxml/Home/PopupBox.fxml"));
             Parent root = fxmlLoader.load();
             PopupBoxController controller = fxmlLoader.getController();
             controller.setMessage(message);
