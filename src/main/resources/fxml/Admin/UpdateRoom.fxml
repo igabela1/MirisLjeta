@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane alignment="center" hgap="10" prefHeight="324.0" prefWidth="321.0" vgap="10" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.controllers.UpdateRoomController">
+<GridPane alignment="center" hgap="10" prefHeight="324.0" prefWidth="321.0" vgap="10" xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.controllers.UpdateRoomController">
     <Label text="Select Room" GridPane.columnIndex="0" GridPane.rowIndex="0" />
     <ComboBox fx:id="roomComboBox" prefHeight="26.0" prefWidth="151.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
     </ComboBox>

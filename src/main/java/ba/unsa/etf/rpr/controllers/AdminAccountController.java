@@ -20,6 +20,7 @@ public class AdminAccountController {
 
     @FXML private Button myProfileButton;
     @FXML private ImageView logOutButton;
+    @FXML private Label nameLabel;
     public TableView<User> usersTable;
     public TableView<Room_Bungalow> roomsTable;
     public TableView<Reservation> reservationsTable;
@@ -45,15 +46,9 @@ public class AdminAccountController {
     private final Utils utils = new Utils();
     public void initialize() {
 
-        System.out.println("usla u admin account controller");
-
         myProfileButton.setOnMouseClicked(event -> utils.changeWindow(myProfileButton, "My Profile", "/fxml/MyProfile.fxml", new MyProfileController(user)));
-
-        System.out.println("prosla my profile button");
-
         logOutButton.setOnMouseClicked(event -> utils.changeWindow(logOutButton, "Main Page", "/fxml/Home.fxml", new HomeController()));
-
-        System.out.println("pred tabele sam");
+        nameLabel.setText(user.getFirstName());
 
         idUserColumn.setCellValueFactory(new PropertyValueFactory<User, Integer>("id"));
         firstNameColumn.setCellValueFactory(new PropertyValueFactory<User, String>("firstName"));
@@ -71,8 +66,6 @@ public class AdminAccountController {
         totalColumn.setCellValueFactory(new PropertyValueFactory<Reservation, Double>("total"));
         userColumn.setCellValueFactory(new PropertyValueFactory<Reservation, String>("userID"));
 
-        System.out.println("nakon kolona sam a prije refresh tables");
-
         refreshTables();
     }
 
@@ -81,33 +74,44 @@ public class AdminAccountController {
      */
     void refreshTables() {
         try {
-            System.out.println("usla u refresh tables");
-
             // Fetch data from your data source (e.g., UserManager, RoomManager and ReservationManager)
             List<User> userList = UserManager.getAll();
             List<Room_Bungalow> roomList = RoomBungManager.getAll();
             List<Reservation> reservationList = ReservationManager.getAll();
 
-            System.out.println("prikupila podatke od userlist i ostalih listi");
-            System.out.println(userList.toString());
-            System.out.println(roomList.toString());
-            System.out.println(reservationList.toString());
+
+            // Ispis elemenata iz roomList
+            System.out.println("Rooms:");
+            for (Room_Bungalow room : roomList) {
+                System.out.println("ID: " + room.getId() +
+                        ", Price Per Night: " + room.getPricePerNight() +
+                        ", Status: " + room.getStatus() +
+                        ", Capacity: " + room.getCapacity());
+            }
+
+            // Ispis elemenata iz reservationList
+            System.out.println("Reservations:");
+            for (Reservation reservation : reservationList) {
+                System.out.println("ID: " + reservation.getId() +
+                        ", Check-In: " + reservation.getCheckIn() +
+                        ", Check-Out: " + reservation.getCheckOut() +
+                        ", Room ID: " + reservation.getRoomId() +
+                        ", Total: " + reservation.getTotal() +
+                        ", Username: " + reservation.getUsername());
+            }
 
             // Update the table views with the new data
             usersTable.setItems(FXCollections.observableList(userList));
             roomsTable.setItems(FXCollections.observableList(roomList));
             reservationsTable.setItems(FXCollections.observableList(reservationList));
 
-            System.out.println("updateovala tabele");
-
             // Refresh the table views to update the UI
             usersTable.refresh();
             roomsTable.refresh();
             reservationsTable.refresh();
-
-            System.out.println("refreshala tabele");
         } catch (Room_BungalowException e) {
             throw new RuntimeException(e);
         }
     }
+
 }
