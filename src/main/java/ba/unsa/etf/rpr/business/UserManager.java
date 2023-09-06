@@ -1,10 +1,11 @@
 package ba.unsa.etf.rpr.business;
 import ba.unsa.etf.rpr.dao.DaoFactory;
-        import ba.unsa.etf.rpr.domain.User;
-        import ba.unsa.etf.rpr.exceptions.Room_BungalowException;
+import ba.unsa.etf.rpr.domain.User;
+import ba.unsa.etf.rpr.exceptions.Room_BungalowException;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.SQLException;
 import java.util.List;
 
 public class UserManager {
@@ -59,5 +60,8 @@ public class UserManager {
             stringBuilder.append(String.format("%02x", b));
         }
         return stringBuilder.toString();
+    }
+    public int totalUsers() throws SQLException{
+        return DaoFactory.userDao().totalUsers();
     }
 }
