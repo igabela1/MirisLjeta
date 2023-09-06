@@ -1,15 +1,12 @@
 package ba.unsa.etf.rpr;
-import ba.unsa.etf.rpr.business.RoomBungManager;
-import ba.unsa.etf.rpr.business.UserManager;
+
 import ba.unsa.etf.rpr.domain.Room_Bungalow;
-import ba.unsa.etf.rpr.domain.User;
-import ba.unsa.etf.rpr.exceptions.Room_BungalowException;
-import org.apache.commons.cli.*;
+import org.apache.commons.cli.HelpFormatter;
+import org.apache.commons.cli.Option;
+import org.apache.commons.cli.Options;
 
 import java.io.PrintWriter;
 import java.util.List;
-import java.util.Scanner;
-import javafx.collections.FXCollections;
 
 /**
  * The type App.
@@ -67,11 +64,7 @@ public class App {
         return room;
     }
 
-    /**
-     * The entry point of application.
-     *
-     * @param args the input arguments
-     */
+    /*
         public static void main( String[] args ) throws Exception, Room_BungalowException {
           System.out.println("Welcome to Miris Ljeta");
             Scanner input =  new Scanner(System.in);
@@ -87,7 +80,7 @@ public class App {
                 int option = input.nextInt();
                 if(option == 1) {
                     List<User> users = FXCollections.observableList(UserManager.getAll());
-                    String username = "", password=" ";
+                    String username, password;
                     Scanner input4 = new Scanner(System.in);
                     System.out.println("Enter username");
                     username = input4.nextLine();
@@ -130,28 +123,28 @@ public class App {
                             if(option2 == 1) {
                                 User u = new User();
                                 Scanner input3 = new Scanner(System.in);
-                                String name=" ", lastName="", usernamee="", passwordd="";
+                                String name, lastName, username, passwordd="";
                                 System.out.println("First name");
                                 name = input3.nextLine();
                                 System.out.println("Last name");
                                 lastName = input3.nextLine();
                                 System.out.println("Username");
-                                usernamee = input3.nextLine();
+                                username = input3.nextLine();
                                 boolean val = true;
                                 do {
                                     valid = true;
                                     List<User> list = FXCollections.observableList(userManager.getAll());
                                     for (int i = 0; i < list.size(); i++) {
-                                        if (usernamee.equals(list.get(i).getUsername())) {
+                                        if (username.equals(list.get(i).getUsername())) {
                                             val = false;
                                             System.out.println("Invalid username, try again");
-                                            usernamee = input3.nextLine();
+                                            username = input3.nextLine();
                                         }
                                     }
-                                    if(usernamee.length()<5) {
+                                    if(username.length()<5) {
                                         val= false;
                                         System.out.println("Invalid username, try again");
-                                        usernamee = input3.nextLine();
+                                        username = input3.nextLine();
                                     }
                                 }while(!val);
                                 System.out.println("Password");
@@ -162,7 +155,7 @@ public class App {
                                 }
                                 u.setFirstName(name);
                                 u.setLastName(lastName);
-                                u.setUsername(usernamee);
+                                u.setUsername(username);
                                 u.setPassword(passwordd);
                                 userManager.add(u);
 
@@ -187,8 +180,8 @@ public class App {
                                 roombung = input6.nextLine();
                                 System.out.println("Number of available:");
                                 number = input6.nextBoolean();
-                                Room_Bungalow b = new Room_Bungalow();
-                                b.setAvailable(number);
+                                Room_Bungalow b = new Room_Bungalow(2, 0, 1, true);
+                              //  b.setAvailable(number);
                                 RoomBungManager.add(b);
                             }
                             if(option2 == 4) {
@@ -282,7 +275,7 @@ public class App {
                 if(option == 4) {
                     List<Room_Bungalow> rooms = FXCollections.observableList(RoomBungManager.getAll());
                     for(int i = 0; i<rooms.size(); i++) {
-                        System.out.println(rooms.get(i).getId() + " " + rooms.get(i).getisAvailable());
+                        System.out.println(rooms.get(i).getId() + " " + rooms.get(i).getStatus());
                     }
                 }
 
@@ -292,6 +285,5 @@ public class App {
 
 
             }
-        }
+        }*/
 }
-
