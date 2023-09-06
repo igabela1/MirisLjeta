@@ -1,14 +1,10 @@
 package ba.unsa.etf.rpr.dao;
 
-import ba.unsa.etf.rpr.Domain.Room_Bungalow;
-import ba.unsa.etf.rpr.Exceptions.Room_BungalowException;
+import ba.unsa.etf.rpr.domain.Room_Bungalow;
+import ba.unsa.etf.rpr.exceptions.Room_BungalowException;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 import java.util.TreeMap;
 
 public class Room_BungalowDaoSQLImpl extends AbstractDao<Room_Bungalow> implements Room_BungalowDao {

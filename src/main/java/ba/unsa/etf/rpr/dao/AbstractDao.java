@@ -1,7 +1,6 @@
 package ba.unsa.etf.rpr.dao;
-import ba.unsa.etf.rpr.Domain.Room_Bungalow;
-import ba.unsa.etf.rpr.Exceptions.Room_BungalowException;
-import ba.unsa.etf.rpr.Domain.Idable;
+import ba.unsa.etf.rpr.exceptions.Room_BungalowException;
+import ba.unsa.etf.rpr.domain.Idable;
 
 import java.sql.*;
 import java.util.*;

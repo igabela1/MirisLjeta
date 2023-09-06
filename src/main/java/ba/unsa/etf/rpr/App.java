@@ -1,9 +1,9 @@
 package ba.unsa.etf.rpr;
 import ba.unsa.etf.rpr.business.RoomBungManager;
 import ba.unsa.etf.rpr.business.UserManager;
-import ba.unsa.etf.rpr.Domain.Room_Bungalow;
-import ba.unsa.etf.rpr.Domain.User;
-import ba.unsa.etf.rpr.Exceptions.Room_BungalowException;
+import ba.unsa.etf.rpr.domain.Room_Bungalow;
+import ba.unsa.etf.rpr.domain.User;
+import ba.unsa.etf.rpr.exceptions.Room_BungalowException;
 import org.apache.commons.cli.*;
 
 import java.io.PrintWriter;

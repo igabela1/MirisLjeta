@@ -2,8 +2,8 @@ package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.business.ReservationManager;
 import ba.unsa.etf.rpr.business.RoomBungManager;
-import ba.unsa.etf.rpr.Domain.Reservation;
-import ba.unsa.etf.rpr.Domain.User;
+import ba.unsa.etf.rpr.domain.Reservation;
+import ba.unsa.etf.rpr.domain.User;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

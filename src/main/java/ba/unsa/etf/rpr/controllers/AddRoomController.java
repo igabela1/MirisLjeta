@@ -1,12 +1,10 @@
 package ba.unsa.etf.rpr.controllers;
 
-import ba.unsa.etf.rpr.Domain.Room_Bungalow;
-import ba.unsa.etf.rpr.Exceptions.Room_BungalowException;
+import ba.unsa.etf.rpr.domain.Room_Bungalow;
+import ba.unsa.etf.rpr.exceptions.Room_BungalowException;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-
-import java.util.List;
 
 /**
  * The type Add room dialog controller.

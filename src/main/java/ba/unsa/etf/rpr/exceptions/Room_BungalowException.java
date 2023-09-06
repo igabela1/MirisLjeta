@@ -1,6 +1,6 @@
-package ba.unsa.etf.rpr.Exceptions;
+package ba.unsa.etf.rpr.exceptions;
 
-public class Room_BungalowException extends Throwable {
+public class Room_BungalowException extends Exception {
 
     public Room_BungalowException(String message, Exception e) {
         super(message,e);

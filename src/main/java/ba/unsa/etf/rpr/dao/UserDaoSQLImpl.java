@@ -1,11 +1,9 @@
 package ba.unsa.etf.rpr.dao;
-import ba.unsa.etf.rpr.Domain.User;
-import ba.unsa.etf.rpr.Exceptions.Room_BungalowException;
+import ba.unsa.etf.rpr.domain.User;
+import ba.unsa.etf.rpr.exceptions.Room_BungalowException;
 
 import java.sql.*;
-import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 import java.util.TreeMap;
 
 public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao {

@@ -1,8 +1,8 @@
 package ba.unsa.etf.rpr.business;
-import ba.unsa.etf.rpr.Domain.User;
+import ba.unsa.etf.rpr.domain.User;
 import ba.unsa.etf.rpr.dao.DaoFactory;
-import ba.unsa.etf.rpr.Domain.Reservation;
-import ba.unsa.etf.rpr.Exceptions.Room_BungalowException;
+import ba.unsa.etf.rpr.domain.Reservation;
+import ba.unsa.etf.rpr.exceptions.Room_BungalowException;
 
 import java.sql.SQLException;
 import java.util.List;

@@ -1,7 +1,7 @@
 package ba.unsa.etf.rpr.controllers;
 
-import ba.unsa.etf.rpr.Domain.Room_Bungalow;
-import ba.unsa.etf.rpr.Exceptions.Room_BungalowException;
+import ba.unsa.etf.rpr.domain.Room_Bungalow;
+import ba.unsa.etf.rpr.exceptions.Room_BungalowException;
 import ba.unsa.etf.rpr.business.RoomBungManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

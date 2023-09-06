@@ -1,8 +1,8 @@
 package ba.unsa.etf.rpr.controllers;
 
         import ba.unsa.etf.rpr.business.UserManager;
-        import ba.unsa.etf.rpr.Domain.User;
-        import ba.unsa.etf.rpr.Exceptions.Room_BungalowException;
+        import ba.unsa.etf.rpr.domain.User;
+        import ba.unsa.etf.rpr.exceptions.Room_BungalowException;
         import javafx.animation.KeyFrame;
         import javafx.animation.Timeline;
         import javafx.event.ActionEvent;

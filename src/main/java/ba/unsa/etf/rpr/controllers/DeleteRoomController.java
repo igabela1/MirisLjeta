@@ -1,7 +1,7 @@
 package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.business.RoomBungManager;
-import ba.unsa.etf.rpr.Domain.Room_Bungalow;
+import ba.unsa.etf.rpr.domain.Room_Bungalow;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
