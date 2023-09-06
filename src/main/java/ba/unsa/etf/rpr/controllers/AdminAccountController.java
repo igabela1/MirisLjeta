@@ -126,7 +126,7 @@ public class AdminAccountController {
         try {
             Stage myProfileStage = new Stage();
             myProfileStage.initStyle(StageStyle.TRANSPARENT);
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Admin/AdminAccount.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/fxml/Admin/AdminAccount.fxml"));
             AdminAccountController controller = new AdminAccountController();
             controller.setUser(user);
             fxmlLoader.setController(controller);
@@ -146,7 +146,7 @@ public class AdminAccountController {
         stage.close();
         // Open the login window
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Home/home.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/fxml/Home/home.fxml"));
             Parent root = fxmlLoader.load();
             Stage loginStage = new Stage();
 
