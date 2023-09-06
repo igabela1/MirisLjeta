@@ -130,7 +130,7 @@ public class SignIn {
                 stage.setResizable(false);
                 stage.setTitle("Admin Panel");
                 try {
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Admin/AdminAccount.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/fxml/Admin/AdminAccount.fxml"));
                     AdminAccountController controller = new AdminAccountController(finalUser);
                     stage.initStyle(StageStyle.TRANSPARENT);
                     fxmlLoader.setController(controller);
@@ -156,7 +156,7 @@ public class SignIn {
                 Stage stage = new Stage();
                 stage.setTitle("Home Page");
                 try {
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Home/home.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/fxml/Home/home.fxml"));
                     HomeController controller = new HomeController(finalUser);
                     fxmlLoader.setController(controller);
                     stage.setScene(new Scene(fxmlLoader.load()));
