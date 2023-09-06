@@ -5,9 +5,9 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>ba.unsa.etf.rpr</groupId>
-  <artifactId>HotelReservationsApp</artifactId>
+  <artifactId>MirisLjeta</artifactId>
   <version>0.1</version>
-  <name>HotelReservationsApp</name>
+  <name>MirisLjeta</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -64,13 +64,13 @@
     <dependency>
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-controls</artifactId>
-      <version>19-ea+7</version>
+      <version>21-ea+24</version>
     </dependency>
 
     <dependency>
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-fxml</artifactId>
-      <version>19-ea+7</version>
+      <version>21-ea+24</version>
     </dependency>
 
     <dependency>
@@ -85,17 +85,16 @@
       <artifactId>mockito-inline</artifactId>
       <version>4.11.0</version>
     </dependency>
-      <dependency>
-          <groupId>org.testng</groupId>
-          <artifactId>testng</artifactId>
-          <version>7.6.1</version>
-          <scope>test</scope>
-      </dependency>
     <dependency>
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
-      <version>7.6.1</version>
+      <version>RELEASE</version>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-graphics</artifactId>
+      <version>21-ea+24</version>
     </dependency>
   </dependencies>
 
