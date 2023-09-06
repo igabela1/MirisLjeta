@@ -53,7 +53,7 @@ public class HomeController {
             stage.close();
             // Open the about camp page window
             try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Home/AboutCamp.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/fxml/Home/AboutCamp.fxml"));
                 Parent root = fxmlLoader.load();
                 Stage aboutUsStage = new Stage();
                 aboutUsStage.initStyle(StageStyle.TRANSPARENT);
@@ -72,7 +72,7 @@ public class HomeController {
             stage.close();
             // Open the profile page window
             try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Home/MyProfile.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/fxml/Home/MyProfile.fxml"));
                 Parent root = fxmlLoader.load();
                 Stage aboutUsStage = new Stage();
                 aboutUsStage.initStyle(StageStyle.TRANSPARENT);
@@ -90,7 +90,7 @@ public class HomeController {
             stage.close();
             // Open the profile page window
             try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Home/SignIn.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/fxml/Home/SignIn.fxml"));
                 Parent root = fxmlLoader.load();
                 Stage aboutUsStage = new Stage();
                 aboutUsStage.initStyle(StageStyle.TRANSPARENT);
@@ -109,7 +109,7 @@ public class HomeController {
             stage.close();
             // Open the profile page window
             try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Home/SignUp.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/fxml/Home/SignUp.fxml"));
                 Parent root = fxmlLoader.load();
                 Stage aboutUsStage = new Stage();
                 aboutUsStage.initStyle(StageStyle.TRANSPARENT);
