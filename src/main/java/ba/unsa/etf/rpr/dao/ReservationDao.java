@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface ReservationDao extends Dao<Reservation> {
+    public int totalIncome() throws SQLException;
     public List<Reservation> getAllForUser(User user) throws SQLException;
 }
 
