@@ -1,7 +1,5 @@
 package ba.unsa.etf.rpr.dao;
 
-import ba.unsa.etf.rpr.Business.RoomBungManager;
-
 public class DaoFactory {
 
     private static final Room_BungalowDao Room_BungalowDao = Room_BungalowDaoSQLImpl.getInstance();

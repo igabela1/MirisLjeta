@@ -1,9 +1,8 @@
-package ba.unsa.etf.rpr.Business;
+package ba.unsa.etf.rpr.business;
 import ba.unsa.etf.rpr.dao.DaoFactory;
         import ba.unsa.etf.rpr.Domain.Room_Bungalow;
         import ba.unsa.etf.rpr.Exceptions.Room_BungalowException;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public class RoomBungManager {

@@ -1,9 +1,8 @@
 package ba.unsa.etf.rpr.controllers;
 
-        import ba.unsa.etf.rpr.Business.UserManager;
+        import ba.unsa.etf.rpr.business.UserManager;
         import ba.unsa.etf.rpr.Domain.User;
         import ba.unsa.etf.rpr.Exceptions.Room_BungalowException;
-        import javafx.animation.FadeTransition;
         import javafx.animation.KeyFrame;
         import javafx.animation.Timeline;
         import javafx.event.ActionEvent;
@@ -16,7 +15,6 @@ package ba.unsa.etf.rpr.controllers;
         import javafx.scene.control.Label;
         import javafx.scene.control.PasswordField;
         import javafx.scene.control.TextField;
-        import javafx.scene.image.Image;
         import javafx.scene.image.ImageView;
         import javafx.stage.Stage;
         import javafx.stage.StageStyle;

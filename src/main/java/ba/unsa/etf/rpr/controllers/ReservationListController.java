@@ -1,7 +1,7 @@
 package ba.unsa.etf.rpr.controllers;
 
-import ba.unsa.etf.rpr.Business.ReservationManager;
-import ba.unsa.etf.rpr.Business.RoomBungManager;
+import ba.unsa.etf.rpr.business.ReservationManager;
+import ba.unsa.etf.rpr.business.RoomBungManager;
 import ba.unsa.etf.rpr.Domain.Reservation;
 import ba.unsa.etf.rpr.Domain.User;
 import javafx.collections.FXCollections;

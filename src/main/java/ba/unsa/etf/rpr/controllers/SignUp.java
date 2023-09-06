@@ -1,12 +1,7 @@
 package ba.unsa.etf.rpr.controllers;
-import ba.unsa.etf.rpr.Business.UserManager;
+import ba.unsa.etf.rpr.business.UserManager;
 import ba.unsa.etf.rpr.Exceptions.Room_BungalowException;
-import ba.unsa.etf.rpr.dao.UserDaoSQLImpl;
 import ba.unsa.etf.rpr.Domain.User;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.animation.TranslateTransition;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,7 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.util.Duration;
+
 import java.awt.*;
 import java.io.FileReader;
 import java.io.IOException;

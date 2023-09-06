@@ -1,4 +1,4 @@
-package ba.unsa.etf.rpr.Business;
+package ba.unsa.etf.rpr.business;
 
 import org.junit.jupiter.api.Test;
 

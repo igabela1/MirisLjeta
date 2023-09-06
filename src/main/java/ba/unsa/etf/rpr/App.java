@@ -1,6 +1,6 @@
 package ba.unsa.etf.rpr;
-import ba.unsa.etf.rpr.Business.RoomBungManager;
-import ba.unsa.etf.rpr.Business.UserManager;
+import ba.unsa.etf.rpr.business.RoomBungManager;
+import ba.unsa.etf.rpr.business.UserManager;
 import ba.unsa.etf.rpr.Domain.Room_Bungalow;
 import ba.unsa.etf.rpr.Domain.User;
 import ba.unsa.etf.rpr.Exceptions.Room_BungalowException;
