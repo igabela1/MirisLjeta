@@ -1,6 +1,6 @@
 # Miris Ljeta Autocamp Reservation System
 
-![App Logo]("images/logoTransparent.png")
+![App logo](logoTransparent.png)"
 
 Welcome to the Miris Ljeta Autocamp Reservation System project! This desktop application, developed as part of the "Razvoj programskih rješenja" course, allows you to manage reservations, rooms, and users for the Miris Ljeta autocamp in Ostrozac.
 
