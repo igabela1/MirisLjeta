@@ -66,8 +66,8 @@ public class UpdateRoomController {
     @FXML
     private void handleOk() throws Room_BungalowException {
         Room_Bungalow selectedRoom = roomComboBox.getSelectionModel().getSelectedItem();
-        selectedRoom.setPrice(Integer.parseInt(priceField.getText()));
-        selectedRoom.setCapacity(Integer.parseInt(capacityField.getText()));
+       // selectedRoom.setPrice(Integer.parseInt(priceField.getText()));
+        //selectedRoom.setCapacity(Integer.parseInt(capacityField.getText()));
         rm.update(selectedRoom);
         okClicked = true;
         ((Stage) updateButton.getScene().getWindow()).close();
@@ -87,15 +87,15 @@ public class UpdateRoomController {
         roomComboBox.setItems((ObservableList<Room_Bungalow>) rooms);
         roomComboBox.getSelectionModel().selectFirst();
 
-        roomComboBox.valueProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null) {
-                typeComboBox.setValue(newValue.getType());
-                capacityField.setText(String.valueOf(newValue.getCapacity()));
+        //roomComboBox.valueProperty().addListener((observable, oldValue, newValue) -> {
+           // if (newValue != null) {
+               // typeComboBox.setValue(newValue.getType());
+                //capacityField.setText(String.valueOf(newValue.getCapacity()));
 
-                priceField.setText(String.valueOf(newValue.getPrice()));
+                //priceField.setText(String.valueOf(newValue.getPrice()));
 
-            }
-        });
+            //}
+        //});
     }
 
     /**
