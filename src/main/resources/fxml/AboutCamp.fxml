@@ -42,9 +42,9 @@
         <Image url="@../images/goBack.png" />
     </ImageView>
     <Text layoutX="29.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="About us" wrappingWidth="210.375">
-        <font>
-            <Font name="System Bold" size="26.0" />
-        </font>
-    </Text>
+      <font>
+         <Font name="System Bold" size="26.0" />
+      </font>
+   </Text>
 
 </Pane>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane prefHeight="490.0" prefWidth="660.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <ImageView fitHeight="496.0" fitWidth="660.0" layoutY="-5.0" opacity="0.36" pickOnBounds="true">
+      <Image url="@../images/autocamp.jpg" />
+   </ImageView>
+   <ImageView fitHeight="247.0" fitWidth="314.0" layoutX="173.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true">
+      <Image url="@../images/logoTransparent.png" />
+   </ImageView>
+   <Text layoutX="157.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Autocamp Miris Ljeta Ostrožac" wrappingWidth="346.79473876953125">
+      <font>
+         <Font name="System Bold Italic" size="24.0" />
+      </font>
+   </Text>
+   <Text layoutX="233.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jablaničko jezero">
+      <font>
+         <Font name="System Bold Italic" size="24.0" />
+      </font>
+   </Text>
+   <Button fx:id="signUpButton" layoutX="490.0" layoutY="420.0" mnemonicParsing="false" onAction="#signUpOnAction" prefHeight="30.0" prefWidth="115.0" style="-fx-background-color: green;" text="Sign Up" textFill="WHITE" />
+   <Button fx:id="signInButton" layoutX="490.0" layoutY="360.0" mnemonicParsing="false" onAction="#signInOnAction" prefHeight="30.0" prefWidth="115.0" style="-fx-background-color: green;" text="Sign In" textFill="WHITE" />
+   <Button fx:id="aboutUsButton" alignment="CENTER" contentDisplay="CENTER" layoutX="40.0" layoutY="420.0" mnemonicParsing="false" onAction="#aboutUsOnAction" prefHeight="30.0" prefWidth="115.0" style="-fx-background-color: green;" text="About us" textAlignment="CENTER" textFill="WHITE" />
+   <Text layoutX="315.0" layoutY="441.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account?" wrappingWidth="174.79473876953125">
+      <font>
+         <Font size="16.0" />
+      </font>
+   </Text>
+</Pane>
