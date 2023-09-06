@@ -30,7 +30,7 @@ public class AddRoomController {
      */
     public Button cancelButton;
 
-    private Room_Bungalow room = new Room_Bungalow();
+    private Room_Bungalow room;
 
     /**
      * Instantiates a new Add room dialog controller.
@@ -75,8 +75,8 @@ public class AddRoomController {
      */
     @FXML
     public void saveRoom(){
-        room.setPrice(Integer.parseInt(priceField.getText()));
-        room.setStatus(1);
+       // room.setPrice(Integer.parseInt(priceField.getText()));
+        //room.setStatus(1);
         System.out.println(typeComboBox.getValue());
         System.out.println(room.toString());
         okClicked = true;
