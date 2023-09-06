@@ -116,7 +116,7 @@ public class RoomList {
             stage.close();
             // Open the about us page window
             try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Home/ReservationList.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/fxml/Home/ReservationList.fxml"));
                 Parent root = fxmlLoader.load();
                 Stage aboutUsStage = new Stage();
                 aboutUsStage.initStyle(StageStyle.TRANSPARENT);
@@ -138,7 +138,7 @@ public class RoomList {
         stage.close();
         // Open the login window
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Home/Main.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/fxml/Home/Main.fxml"));
             Parent root = fxmlLoader.load();
             Stage loginStage = new Stage();
             loginStage.setScene(new Scene(root, Color.TRANSPARENT));
