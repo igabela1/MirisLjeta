@@ -40,6 +40,8 @@ public class Utils {
             stage.getIcons().add(new Image("images/logoTransparent.png"));
             stage.show();
         } catch (Exception e) {
+            // Dodajte liniju ispod kako biste ispisali detaljnu grešku u konzoli.
+            e.printStackTrace();
             new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
         }
     }
