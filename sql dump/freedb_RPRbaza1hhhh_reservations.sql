@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.31, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
 -- Host: sql.freedb.tech    Database: freedb_RPRbaza1hhhh
 -- ------------------------------------------------------
--- Server version	8.0.28
+-- Server version	8.0.34-0ubuntu0.22.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,33 +16,26 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `USERS`
+-- Table structure for table `reservations`
 --
 
-DROP TABLE IF EXISTS `USERS`;
+DROP TABLE IF EXISTS `reservations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `USERS` (
-                         `idUSERS` int NOT NULL,
-                         `first_name` varchar(45) NOT NULL,
-                         `last_name` varchar(45) NOT NULL,
-                         `email` varchar(100) DEFAULT NULL,
-                         `isAdministrator` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'if role = 1 then the user is admin of the application, else it''s a basic user.\\n',
-                         `username` varchar(45) NOT NULL,
-                         `password` varchar(45) DEFAULT NULL,
-                         PRIMARY KEY (`idUSERS`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+CREATE TABLE `reservations` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `checkIn` datetime(6) NOT NULL,
+  `checkOut` datetime(6) NOT NULL,
+  `roomID` int NOT NULL,
+  `total` int NOT NULL,
+  `userID` int unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `roomID_idx` (`roomID`),
+  KEY `fk_reservations_users1_idx` (`userID`),
+  CONSTRAINT `fk_reservations_rooms1` FOREIGN KEY (`roomID`) REFERENCES `rooms` (`id`),
+  CONSTRAINT `fk_reservations_users1` FOREIGN KEY (`userID`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `USERS`
---
-
-LOCK TABLES `USERS` WRITE;
-/*!40000 ALTER TABLE `USERS` DISABLE KEYS */;
-INSERT INTO `USERS` VALUES ('Ilhana','Gabela','igabela1@etf.unsa.ba',1,'igabela1','ilhana123'),('Faris ','Gabela','fgabela1@etf.unsa.ba',0,'fgabela1','faris123'),('Berin ','Karahodžić','bkarahodzic1@etf.unsa.ba',0,'bkarahodzic1','berin123'),('Berina','Zejnilović','bzejnilovic1@etf.unsa.ba',0,'bzejnilovic1','berina123');
-/*!40000 ALTER TABLE `USERS` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -53,4 +46,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-24 12:40:52
+-- Dump completed on 2023-09-10 15:48:17

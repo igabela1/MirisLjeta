@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.31, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
 -- Host: sql.freedb.tech    Database: freedb_RPRbaza1hhhh
 -- ------------------------------------------------------
--- Server version	8.0.28
+-- Server version	8.0.34-0ubuntu0.22.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,35 +16,24 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `RESERVATIONS`
+-- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `RESERVATIONS`;
+DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `RESERVATIONS` (
-                                `idRESERVATIONS` int NOT NULL,
-                                `checkIn` datetime NOT NULL,
-                                `checkOut` datetime NOT NULL,
-                                `idROOMS/BUNGALOWS` int NOT NULL,
-                                `idUSERS` int NOT NULL,
-                                /*`username` varchar(45) NOT NULL,*/
-                                PRIMARY KEY (`idRESERVATIONS`),
-                                KEY `room_id_idx` (`idROOMS/BUNGALOWS`),
-
-                                CONSTRAINT `room_id` FOREIGN KEY (`idROOMS/BUNGALOWS`) REFERENCES `ROOMS/BUNGALOWS` (`idROOMS/BUNGALOWS`)
-
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+CREATE TABLE `users` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(16) NOT NULL,
+  `password` varchar(256) NOT NULL,
+  `firstName` varchar(100) NOT NULL,
+  `lastName` varchar(100) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `isAdministrator` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username_UNIQUE` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `RESERVATIONS`
---
-
-LOCK TABLES `RESERVATIONS` WRITE;
-/*!40000 ALTER TABLE `RESERVATIONS` DISABLE KEYS */;
-/*!40000 ALTER TABLE `RESERVATIONS` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -55,4 +44,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
-
+-- Dump completed on 2023-09-10 15:48:15

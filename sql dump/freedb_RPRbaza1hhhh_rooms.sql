@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.31, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
 -- Host: sql.freedb.tech    Database: freedb_RPRbaza1hhhh
 -- ------------------------------------------------------
--- Server version	8.0.28
+-- Server version	8.0.34-0ubuntu0.22.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,30 +16,20 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `ROOMS`
+-- Table structure for table `rooms`
 --
 
-DROP TABLE IF EXISTS `ROOMS`;
+DROP TABLE IF EXISTS `rooms`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `ROOMS` (
-                         `idROOMS/BUNGALOWS` int NOT NULL AUTO_INCREMENT,
-                         `roomDescription` varchar(45) NOT NULL,
-                         `roomAvailable` tinyint(1) NOT NULL,
-
-                         PRIMARY KEY (`idROOMS/BUNGALOWS`)
-
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+CREATE TABLE `rooms` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `pricePerNight` int NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '1',
+  `capacity` int NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `ROOMS`
---
-
-LOCK TABLES `ROOMS/BUNGALOWS`WRITE;
-/*!40000 ALTER TABLE `ROOMS/BUNGALOWS` DISABLE KEYS */;
-/*!40000 ALTER TABLE `ROOMS/BUNGALOWS` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -50,4 +40,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
-
+-- Dump completed on 2023-09-10 15:48:14
