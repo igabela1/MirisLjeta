@@ -2,85 +2,66 @@ package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.business.RoomBungManager;
 import ba.unsa.etf.rpr.domain.Room_Bungalow;
-import javafx.event.ActionEvent;
+import ba.unsa.etf.rpr.domain.User;
+import ba.unsa.etf.rpr.exceptions.Room_BungalowException;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.stage.Stage;
+import javafx.scene.control.Label;
 
-import java.sql.SQLException;
-import java.util.List;
-
-/**
- * The type Delete room dialog controller.
- */
 public class DeleteRoomController {
 
+    @FXML private Label confirmationLabel;
+    @FXML private Button confirmButton, cancelButton;
+
+    private final Utils utils = new Utils();
     private final RoomBungManager rm = new RoomBungManager();
-    @FXML
-    private ComboBox<Room_Bungalow> roomsComboBox;
+    private final Room_Bungalow roomToDelete;
+    private User user = new User();
+    private AdminAccountController adminAccountController;
 
-    /**
-     * The Delete button.
-     */
-    @FXML
-    public Button deleteButton;
-
-    /**
-     * The Cancel button.
-     */
-    @FXML
-    public Button cancelButton;
-
-    private Room_Bungalow selectedRoom;
-    private boolean okClicked = false;
-
-    /**
-     * Sets rooms.
-     *
-     * @param rooms the rooms
-     */
-    public void setRooms(List<Room_Bungalow> rooms) {
-        roomsComboBox.getItems().addAll(rooms);
-    }
-
-    /**
-     * Sets ok clicked.
-     *
-     * @return the ok clicked
-     */
-    public boolean isOkClicked() {
-        return okClicked;
-    }
-
-    /**
-     * Gets selected room.
-     *
-     * @return the selected room
-     */
-    public Room_Bungalow getSelectedRoom() {
-        return selectedRoom;
+    public DeleteRoomController(AdminAccountController adminAccountController, User user, Room_Bungalow roomToDelete) {
+        this.adminAccountController = adminAccountController;
+        this.user = user;
+        this.roomToDelete = roomToDelete;
     }
 
     @FXML
-    private void handleDeleteRoom(){
-        selectedRoom = roomsComboBox.getSelectionModel().getSelectedItem();
-        if (selectedRoom != null) {
-            okClicked = true;
-            Stage stage = (Stage) deleteButton.getScene().getWindow();
-            stage.close();
+    private void initialize() {
+        if (roomToDelete == null) {
+            // Prikazati upozorenje korisniku da nijedna soba nije izabrana
+            showAlert("Please select a room to delete.");
+            utils.closeCurrentStage(confirmationLabel);
+            return;
+        }
+
+        String confirmationMessage = "Are you sure you want to delete Room #" + roomToDelete.getId() + "?";
+        confirmationLabel.setText(confirmationMessage);
+
+        confirmButton.setOnAction(event -> deleteRoom());
+        cancelButton.setOnAction(event -> utils.closeCurrentStage(confirmationLabel));
+    }
+
+    @FXML
+    private void deleteRoom() {
+        try {
+            // Obriši sobu iz baze podataka
+            rm.delete(roomToDelete.getId());
+
+            // Ažuriraj tabelu u AdminAccountController-u
+            adminAccountController.refreshTables();
+
+            utils.closeCurrentStage(confirmationLabel);
+        } catch (Room_BungalowException e) {
+            showAlert("An error occurred while deleting the room.");
         }
     }
 
-    /**
-     * Cancel delete.
-     *
-     * @param actionEvent the action event
-     */
-    @FXML
-    public void cancelDelete(ActionEvent actionEvent) {
-        Button cancelButton = (Button) actionEvent.getSource();
-        Stage stage = (Stage) cancelButton.getScene().getWindow();
-        stage.close();
+    private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }
