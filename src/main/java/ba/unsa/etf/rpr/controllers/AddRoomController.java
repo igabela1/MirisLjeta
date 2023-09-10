@@ -1,98 +1,94 @@
 package ba.unsa.etf.rpr.controllers;
 
+import ba.unsa.etf.rpr.business.RoomBungManager;
 import ba.unsa.etf.rpr.domain.Room_Bungalow;
+import ba.unsa.etf.rpr.domain.User;
 import ba.unsa.etf.rpr.exceptions.Room_BungalowException;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import javafx.stage.Stage;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
 
-/**
- * The type Add room dialog controller.
- */
 public class AddRoomController {
 
+    @FXML private TextField capacityField, pricePerNightField;
 
-    /**
-     * The Type combo box.
-     */
-    public ComboBox typeComboBox;
+    @FXML private RadioButton statusYesRadioButton, statusNoRadioButton;
+
+    @FXML private Button saveButton, cancelButton;
+
+    private final Utils utils = new Utils();
+    private final User user;
+    private final RoomBungManager rm = new RoomBungManager();
+
+    private AdminAccountController adminAccountController;
+
+    public AddRoomController(AdminAccountController adminAccountController, User user) {
+        this.user = user;
+        this.adminAccountController = adminAccountController;
+    }
+
     @FXML
-    private TextField capacityField;
+    private void initialize() {
+        saveButton.setOnMouseClicked(event -> saveRoom());
+        cancelButton.setOnMouseClicked(event -> utils.closeCurrentStage(cancelButton));
+    }
+
     @FXML
-    private TextField priceField;
+    private void saveRoom() {
+        try {
+            // Validacija unosa
+            String capacityText = capacityField.getText().trim();
+            String pricePerNightText = pricePerNightField.getText().trim();
 
-    /**
-     * The Save button.
-     */
-    public Button saveButton;
-    /**
-     * The Cancel button.
-     */
-    public Button cancelButton;
+            if (capacityText.isEmpty() || pricePerNightText.isEmpty()) {
+                showAlert("Please fill in all fields.");
+                return;
+            }
 
-    private Room_Bungalow room;
+            int capacity = Integer.parseInt(capacityText);
+            int pricePerNight = Integer.parseInt(pricePerNightText);
 
-    /**
-     * Instantiates a new Add room dialog controller.
-     *
-     * @throws Room_BungalowException
-     */
-    public AddRoomController() throws Room_BungalowExceptionn {
+            if (capacity < 0 || pricePerNight < 0) {
+                showAlert("Capacity and price per night must be positive numbers.");
+                return;
+            }
+
+            boolean isStatusYesSelected = statusYesRadioButton.isSelected();
+            boolean isStatusNoSelected = statusNoRadioButton.isSelected();
+
+            if (isStatusYesSelected == isStatusNoSelected) {
+                showAlert("Please select either Available or Not Available status.");
+                return;
+            }
+
+            Room_Bungalow room = new Room_Bungalow();
+            room.setCapacity(capacity);
+            room.setPricePerNight(pricePerNight);
+            room.setStatus(isStatusYesSelected);
+
+            // Dodavanje sobe u bazu
+            rm.add(room);
+
+            // Ažuriranje tabele u AdminAccountController-u
+            adminAccountController.refreshTables();
+
+            utils.closeCurrentStage(saveButton);
+        } catch (NumberFormatException | Room_BungalowException e) {
+            showAlert("Invalid input. Please enter valid numeric values.");
+        }
     }
 
-    /**
-     * Gets room.
-     *
-     * @return the room
-     */
-    public Room_Bungalow getRoom() {
-        return room;
-    }
-
-    /**
-     * Sets room.
-     *
-     * @param r the r
-     */
-    public void setRoom(Room_Bungalow r) {
-        this.room = r;
-    }
-
-    private boolean okClicked = false;
-
-    /**
-     * Is ok clicked boolean.
-     *
-     * @return the boolean
-     */
-    public boolean isOkClicked() {
-        return okClicked;
-    }
-
-
-    /**
-     * Save room.
-     */
-    @FXML
-    public void saveRoom(){
-       // room.setPrice(Integer.parseInt(priceField.getText()));
-        //room.setStatus(1);
-        System.out.println(typeComboBox.getValue());
-        System.out.println(room.toString());
-        okClicked = true;
-        // close the dialog
-        ((Stage) saveButton.getScene().getWindow()).close();
-    }
-
-    /**
-     * Cancel room.
-     */
-    @FXML
-    public void cancelRoom() {
-        ((Stage) cancelButton.getScene().getWindow()).close();
+    private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
 
-    private class Room_BungalowExceptionn extends Exception {
-    }
+
+
 }
