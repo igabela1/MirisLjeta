@@ -1,119 +1,104 @@
 package ba.unsa.etf.rpr.controllers;
 
-import ba.unsa.etf.rpr.domain.Room_Bungalow;
-import ba.unsa.etf.rpr.exceptions.Room_BungalowException;
 import ba.unsa.etf.rpr.business.RoomBungManager;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import ba.unsa.etf.rpr.domain.Room_Bungalow;
+import ba.unsa.etf.rpr.domain.User;
+import ba.unsa.etf.rpr.exceptions.Room_BungalowException;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import javafx.stage.Stage;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
-/**
- * The type Update room controller.
- */
 public class UpdateRoomController {
-    /**
-     * The Type combo box.
-     */
-    public ComboBox<String> typeComboBox;
-    /**
-     * The Capacity field.
-     */
-    public TextField capacityField;
 
-    public TextField priceField;
+    @FXML private TextField capacityField, pricePerNightField;
+    @FXML private RadioButton statusYesRadioButton, statusNoRadioButton;
+    @FXML private Button saveButton, cancelButton;
 
-    /**
-     * The Update button.
-     */
-    public Button updateButton;
-    /**
-     * The Cancel button.
-     */
-    public Button cancelButton;
-    /**
-     * The Room combo box.
-     */
-    public ComboBox<Room_Bungalow> roomComboBox;
-
-    private boolean okClicked = false;
-
-    /**
-     * Gets room.
-     *
-     * @return the room
-     */
-    public Room_Bungalow getRoom() {
-        return room;
-    }
-
-    /**
-     * Sets room.
-     *
-     * @param room the room
-     */
-    public void setRoom(Room_Bungalow room) {
-        this.room = room;
-    }
-    private List<Room_Bungalow> rooms = new ArrayList<>();
-    private Room_Bungalow room;
+    private final Utils utils = new Utils();
     private final RoomBungManager rm = new RoomBungManager();
-    @FXML
-    private void handleOk() throws Room_BungalowException {
-        Room_Bungalow selectedRoom = roomComboBox.getSelectionModel().getSelectedItem();
-       // selectedRoom.setPrice(Integer.parseInt(priceField.getText()));
-        //selectedRoom.setCapacity(Integer.parseInt(capacityField.getText()));
-        rm.update(selectedRoom);
-        okClicked = true;
-        ((Stage) updateButton.getScene().getWindow()).close();
+    private final Room_Bungalow roomToUpdate;
+    private AdminAccountController adminAccountController;
+    private User user = new User();
+
+    public UpdateRoomController(AdminAccountController adminAccountController, User user, Room_Bungalow room) {
+        this.adminAccountController = adminAccountController;
+        this.user = user;
+        this.roomToUpdate = room;
     }
 
     @FXML
-    private void handleCancel() {((Stage) cancelButton.getScene().getWindow()).close(); }
+    private void initialize() {
+        if (roomToUpdate == null) {
+            // Prikazati upozorenje korisniku da nijedna soba nije izabrana
+            showAlert("Please select a room to update.");
+            utils.closeCurrentStage(saveButton);
+            return;
+        }
 
+        // Postavite polja za unos informacija o sobi na trenutne vrednosti sobe
+        capacityField.setText(String.valueOf(roomToUpdate.getCapacity()));
+        pricePerNightField.setText(String.valueOf(roomToUpdate.getPricePerNight()));
+        statusYesRadioButton.setSelected(roomToUpdate.getStatus());
+        statusNoRadioButton.setSelected(!roomToUpdate.getStatus());
 
-
-
-    public void initialize() throws Room_BungalowException, SQLException {
-
-
-        List<Room_Bungalow> allRooms = rm.getAll();
-        rooms = FXCollections.observableArrayList(allRooms);
-        roomComboBox.setItems((ObservableList<Room_Bungalow>) rooms);
-        roomComboBox.getSelectionModel().selectFirst();
-
-        //roomComboBox.valueProperty().addListener((observable, oldValue, newValue) -> {
-           // if (newValue != null) {
-               // typeComboBox.setValue(newValue.getType());
-                //capacityField.setText(String.valueOf(newValue.getCapacity()));
-
-                //priceField.setText(String.valueOf(newValue.getPrice()));
-
-            //}
-        //});
+        saveButton.setOnAction(event -> updateRoom());
+        cancelButton.setOnAction(event -> utils.closeCurrentStage(cancelButton));
     }
 
-    /**
-     * Is ok clicked boolean.
-     *
-     * @return the boolean
-     */
-    public boolean isOkClicked() {
-        return okClicked;
+
+    @FXML
+    private void updateRoom() {
+        try {
+            // Validacija unosa
+            String capacityText = capacityField.getText().trim();
+            String pricePerNightText = pricePerNightField.getText().trim();
+
+            if (capacityText.isEmpty() || pricePerNightText.isEmpty()) {
+                showAlert("Please fill in all fields.");
+                return;
+            }
+
+            int capacity = Integer.parseInt(capacityText);
+            int pricePerNight = Integer.parseInt(pricePerNightText);
+
+            if (capacity < 0 || pricePerNight < 0) {
+                showAlert("Capacity and price per night must be positive numbers.");
+                return;
+            }
+
+            boolean isStatusYesSelected = statusYesRadioButton.isSelected();
+            boolean isStatusNoSelected = statusNoRadioButton.isSelected();
+
+            if (isStatusYesSelected == isStatusNoSelected) {
+                showAlert("Please select either Available or Not Available status.");
+                return;
+            }
+
+            // Ažuriranje informacija o sobi
+            roomToUpdate.setCapacity(capacity);
+            roomToUpdate.setPricePerNight(pricePerNight);
+            roomToUpdate.setStatus(isStatusYesSelected);
+
+            // Ažuriranje sobe u bazi podataka
+            rm.update(roomToUpdate);
+
+            // Ažuriranje tabele u AdminAccountController-u
+            adminAccountController.refreshTables();
+
+            utils.closeCurrentStage(saveButton);
+        } catch (NumberFormatException | Room_BungalowException e) {
+            showAlert("Invalid input. Please enter valid numeric values.");
+        }
     }
 
-    /**
-     * Sets room.
-     *
-     * @param room the room
-     */
-    public void setHotel(Room_Bungalow room) {
-        this.room = room;
+
+    private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }
-

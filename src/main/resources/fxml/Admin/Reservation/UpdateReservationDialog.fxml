@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane alignment="center" hgap="10" prefHeight="203.0" prefWidth="411.0" vgap="10" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+
+    <Label text="Update Reservation" GridPane.columnIndex="0" GridPane.columnSpan="2" />
+
+    <DatePicker fx:id="checkInDatePicker" promptText="Check-In Date" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+    <DatePicker fx:id="checkOutDatePicker" promptText="Check-Out Date" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+    <Label text="Select a Room:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+    <ComboBox fx:id="roomComboBox" promptText="Select a Room" GridPane.columnIndex="1" GridPane.rowIndex="2">
+    </ComboBox>
+
+
+    <Button fx:id="updateButton" text="UPDATE" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+    <columnConstraints>
+        <ColumnConstraints />
+        <ColumnConstraints />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+    </rowConstraints>
+    <padding>
+        <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+    </padding>
+</GridPane>

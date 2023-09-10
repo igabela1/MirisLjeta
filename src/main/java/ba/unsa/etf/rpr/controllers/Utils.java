@@ -1,6 +1,8 @@
 package ba.unsa.etf.rpr.controllers;
 
 import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
+
+import ba.unsa.etf.rpr.domain.User;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -9,6 +11,10 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.Window;
+
+import java.io.IOException;
+import java.util.function.Consumer;
 
 public class Utils {
     public void changeWindow(Node n, String title, String file, Object controller) {
@@ -20,7 +26,7 @@ public class Utils {
         }
     }
 
-    private void closeCurrentStage(Node node) {
+    public void closeCurrentStage(Node node) {
         // Close the current window
         Stage stage = (Stage) node.getScene().getWindow();
         if (stage != null) {
@@ -40,9 +46,9 @@ public class Utils {
             stage.getIcons().add(new Image("images/logoTransparent.png"));
             stage.show();
         } catch (Exception e) {
-            // Dodajte liniju ispod kako biste ispisali detaljnu grešku u konzoli.
             e.printStackTrace();
             new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
         }
     }
+
 }
