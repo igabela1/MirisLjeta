@@ -50,7 +50,7 @@ public class ReservationDaoSQLImpl extends AbstractDao<Reservation> implements R
             reservation.setCheckIn(rs.getDate("checkIn").toLocalDate());
             reservation.setCheckOut(rs.getDate("checkOut").toLocalDate());
             reservation.setTotal(rs.getInt("total"));
-            reservation.setRoomId(DaoFactory.room_bungalowDao().getById(rs.getInt("room_id")));
+            reservation.setRoomId(DaoFactory.room_bungalowDao().getById(rs.getInt("roomID")));
             return reservation;
         } catch (Exception e) {
             throw new Room_BungalowException(e.getMessage(), e);
