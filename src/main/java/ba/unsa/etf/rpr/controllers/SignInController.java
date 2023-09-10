@@ -60,8 +60,8 @@ public class SignInController {
             return;
         }
 
-        String fxmlTitle = (user.getRole() == 1) ? "Admin Panel" : "My Profile";
-        String fxmlPath = (user.getRole() == 1) ? "/fxml/Admin/AdminAccount.fxml" : "/fxml/MyProfile.fxml";
-        utils.changeWindow(signInButton, fxmlTitle, fxmlPath, (user.getRole() == 1) ? new AdminAccountController(user) : new MyProfileController(user));
+        String fxmlTitle = (user.getRole() == 1) ? "Admin Panel" : "Home";
+        String fxmlPath = (user.getRole() == 1) ? "/fxml/Admin/AdminAccount.fxml" : "/fxml/RoomList.fxml";
+        utils.changeWindow(signInButton, fxmlTitle, fxmlPath, (user.getRole() == 1) ? new AdminAccountController(user) : new RoomListController(user));
     }
 }
