@@ -24,8 +24,8 @@ public class MyProfileController {
         usernameLabel.setText(user.getUsername());
 
         String fxmlTitle = (user.getRole() == 1) ? "Admin Panel" : "Home Page";
-        String fxmlPath = (user.getRole() == 1) ? "/fxml/Admin/AdminAccount.fxml" : "/fxml/Home.fxml";
-        goBack.setOnMouseClicked(event -> utils.changeWindow(goBack, fxmlTitle, fxmlPath, (user.getRole() == 1) ? new AdminAccountController(user) : new HomeController(user)));
+        String fxmlPath = (user.getRole() == 1) ? "/fxml/Admin/AdminAccount.fxml" : "/fxml/RoomList.fxml";
+        goBack.setOnMouseClicked(event -> utils.changeWindow(goBack, fxmlTitle, fxmlPath, (user.getRole() == 1) ? new AdminAccountController(user) : new RoomListController(user)));
         logOutButton.setOnMouseClicked(event -> utils.changeWindow(logOutButton, "Main Page", "/fxml/Home.fxml", new HomeController()));
     }
 }
