@@ -19,15 +19,14 @@ public class Room_BungalowDaoTest {
         // assertEquals(2, room.getCapacity());
 
     }
-    /*
-        @Test
-        public void testEquals() {
-            Room_Bungalow room1 = new Room_Bungalow( 2, 0, 1, 3);
-            Room_Bungalow room2 = new Room_Bungalow( 2, 0, 1, 4);
+    @Test
+    public void testEquals() {
+        Room_Bungalow room1 = new Room_Bungalow( 2, 0, 1, false);
+        Room_Bungalow room2 = new Room_Bungalow( 2, 0, 1, false);
 
-            assertEquals(room1, room2);
-        }
-    */
+        assertEquals(room1, room2);
+    }
+
     @Test
     public void testHashCode() {
         Room_Bungalow room1 = new Room_Bungalow( 2, 1, 1, false);
