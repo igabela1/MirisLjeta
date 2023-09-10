@@ -10,10 +10,10 @@ public class Room_Bungalow implements Idable {
     private int id;
     private int pricePerNight;
     private int capacity;
-    private boolean status;
+    private Boolean status;
 
 
-    public Room_Bungalow(int id, int pricePerNight,  int capacity, boolean status) {
+    public Room_Bungalow(int id, int pricePerNight,  int capacity, Boolean status) {
         this.id = id;
         this.pricePerNight = pricePerNight;
         this.capacity = capacity;
@@ -32,11 +32,11 @@ public class Room_Bungalow implements Idable {
         this.id = id;
     }
 
-    public boolean getStatus() {
+    public Boolean getStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(Boolean status) {
         this.status = status;
     }
 

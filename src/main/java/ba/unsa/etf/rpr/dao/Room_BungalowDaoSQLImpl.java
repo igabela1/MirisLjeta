@@ -3,7 +3,9 @@ package ba.unsa.etf.rpr.dao;
 import ba.unsa.etf.rpr.domain.Room_Bungalow;
 import ba.unsa.etf.rpr.exceptions.Room_BungalowException;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -48,6 +50,16 @@ public class Room_BungalowDaoSQLImpl extends AbstractDao<Room_Bungalow> implemen
         item.put("status",object.getStatus());
         item.put("pricePerNight", object.getPricePerNight());
         return item;
+    }
+
+    public int totalRooms() throws SQLException {
+        int total = 0;
+        String query = "SELECT count(id) AS total_rooms FROM rooms";
+        try (PreparedStatement st = AbstractDao.getConnection().prepareStatement(query)) {
+            ResultSet result = st.executeQuery();
+            if (result.next()) total = result.getInt("total_rooms");
+        }
+        return total;
     }
 }
 

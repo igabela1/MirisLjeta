@@ -35,4 +35,7 @@ public class RoomBungManager {
         return DaoFactory.room_bungalowDao().getAll();
     }
 
+    public int totalRooms() throws SQLException{
+        return DaoFactory.room_bungalowDao().totalRooms();
+    }
 }
