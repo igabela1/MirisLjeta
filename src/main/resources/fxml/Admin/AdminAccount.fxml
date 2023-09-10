@@ -10,72 +10,130 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1">
-    <Pane layoutY="-1.0" prefHeight="768.0" prefWidth="181.0" style="-fx-background-color: ACE1AF;">
-        <Button fx:id="myProfileButton" layoutX="50.0" layoutY="232.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="My Profile">
-           <font>
-               <Font size="14.0" />
-           </font>
-        </Button>
-        <ImageView fx:id="logOutButton" fitHeight="40.0" fitWidth="40.0" layoutX="22.0" layoutY="706.0" pickOnBounds="true" preserveRatio="true">
-           <Image url="@../../images/logOut.png" />
-        </ImageView>
-    </Pane>
-   <Label layoutX="45.0" layoutY="99.0" text="Welcome">
-      <font>
-         <Font size="24.0" />
-      </font></Label>
-   <Text fill="#0ecc18" layoutX="24.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin page">
-      <font>
-         <Font name="Freestyle Script" size="51.0" />
-      </font>
-   </Text>
-   <Label fx:id="nameLabel" layoutX="63.0" layoutY="135.0" opacity="0.31" text="Name">
-      <font>
-         <Font size="24.0" />
-      </font></Label>
-    <TabPane layoutX="181.0" layoutY="-1.0" prefHeight="768.0" prefWidth="798.0" tabClosingPolicy="UNAVAILABLE">
-        <Tab text="Reservations">
-            <TableView fx:id="reservationsTable" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="739.0" prefWidth="651.0">
-                <columns>
-                    <TableColumn fx:id="reservationIdColumn" prefWidth="75.0" text="ID" />
-                    <TableColumn fx:id="checkInColumn" prefWidth="100.0" text="CHECK IN" />
-                    <TableColumn fx:id="checkOutColumn" prefWidth="100.0" text="CHECK OUT" />
-                    <TableColumn fx:id="roomIdColumn" prefWidth="100.0" text="ROOM ID" />
-                    <TableColumn fx:id="totalColumn" prefWidth="125.0" text="TOTAL" />
-                    <TableColumn fx:id="userColumn" prefWidth="150.0" text="USER" />
-                </columns>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="785.0" prefWidth="1326.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <TabPane cacheShape="false" layoutX="189.0" layoutY="-2.0" pickOnBounds="false" prefHeight="786.0" prefWidth="802.0" tabClosingPolicy="UNAVAILABLE">
+      <Tab text="Reservations">
+         <AnchorPane prefHeight="200.0" prefWidth="200.0">
+            <TableView fx:id="reservationsTable" editable="true" layoutX="-1.0" layoutY="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="611.0" prefWidth="800.0" style="-fx-background-color: white;">
+               <columns>
+                  <TableColumn fx:id="reservationIdColumn" prefWidth="122.44451904296875" style="-fx-background-color: transparent;" text="ID" />
+                  <TableColumn fx:id="checkInColumn" prefWidth="126.22225952148438" style="-fx-background-color: transparent;" text="CHECK IN" />
+                  <TableColumn fx:id="checkOutColumn" prefWidth="126.22225952148438" style="-fx-background-color: transparent;" text="CHECK OUT" />
+                  <TableColumn fx:id="roomIdColumn" prefWidth="122.44451904296875" style="-fx-background-color: transparent;" text="ROOM ID" />
+                  <TableColumn fx:id="totalColumn" prefWidth="157.55548095703125" style="-fx-background-color: transparent;" text="TOTAL" />
+                  <TableColumn fx:id="userColumn" prefWidth="186.88885498046875" style="-fx-background-color: transparent;" text="USER" />
+               </columns>
             </TableView>
-            <Button fx:id="addReservationButton" layoutX="100.0" layoutY="385.0" mnemonicParsing="false" prefWidth="100.0" text="ADD" />
-            <Button fx:id="updateReservationButton" layoutX="225.0" layoutY="385.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="UPDATE" />
-            <Button fx:id="deleteReservationButton" layoutX="350.0" layoutY="385.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="DELETE" />
-        </Tab>
-        <Tab text="Rooms">
-            <TableView fx:id="roomsTable" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="739.0" prefWidth="476.0">
-                <columns>
-                    <TableColumn fx:id="idRoomColumn" prefWidth="100.0" text="ID" />
-                    <TableColumn fx:id="pricePerNightColumn" prefWidth="150.0" text="PRICE PER NIGHT" />
-                    <TableColumn fx:id="capacityColumn" prefWidth="100.0" text="CAPACITY" />
-                    <TableColumn fx:id="statusColumn" prefWidth="125.0" text="STATUS" />
-                </columns>
+            <Button fx:id="addReservationButton" depthTest="DISABLE" layoutX="161.0" layoutY="655.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: ACE1AF;" text="ADD">
+               <font>
+                  <Font size="16.0" />
+               </font></Button>
+            <Button fx:id="updateReservationButton" layoutX="351.0" layoutY="655.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: ACE1AF;" text="UPDATE">
+               <font>
+                  <Font size="16.0" />
+               </font></Button>
+            <Button fx:id="deleteReservationButton" layoutX="541.0" layoutY="655.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: ACE1AF;" text="DELETE">
+               <font>
+                  <Font size="16.0" />
+               </font></Button>
+         </AnchorPane>
+      </Tab>
+      <Tab text="Rooms">
+         <AnchorPane prefHeight="739.0" prefWidth="880.0">
+            <TableView fx:id="roomsTable" editable="true" layoutY="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="610.0" prefWidth="800.0">
+               <columns>
+                  <TableColumn fx:id="idRoomColumn" prefWidth="100.0" style="-fx-background-color: transparent;" text="ID" />
+                  <TableColumn fx:id="pricePerNightColumn" prefWidth="246.00003051757812" style="-fx-background-color: transparent;" text="PRICE PER NIGHT" />
+                  <TableColumn fx:id="capacityColumn" prefWidth="238.6666259765625" style="-fx-background-color: transparent;" text="CAPACITY" />
+                  <TableColumn fx:id="statusColumn" prefWidth="214.66668701171875" style="-fx-background-color: transparent;" text="STATUS" />
+               </columns>
             </TableView>
-            <Button fx:id="addRoomButton" layoutX="100.0" layoutY="385.0" mnemonicParsing="false" prefWidth="100.0" text="ADD" />
-            <Button fx:id="updateRoomButton" layoutX="225.0" layoutY="385.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="UPDATE" />
-            <Button fx:id="deleteRoomButton" layoutX="350.0" layoutY="385.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="DELETE" />
-        </Tab>
-        <Tab text="Users">
-            <TableView fx:id="usersTable" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="739.0" prefWidth="797.0">
-                <columns>
-                    <TableColumn fx:id="idUserColumn" prefWidth="100.0" text="ID" />
-                    <TableColumn fx:id="firstNameColumn" prefWidth="150.0" text="FIRST NAME" />
-                    <TableColumn fx:id="lastNameColumn" prefWidth="200.0" text="LAST NAME" />
-                    <TableColumn fx:id="emailColumn" prefWidth="200.0" text="EMAIL" />
-                    <TableColumn fx:id="usernameColumn" prefWidth="150.0" text="USERNAME" />
-                </columns>
+            <Button fx:id="addRoomButton" depthTest="DISABLE" layoutX="161.0" layoutY="655.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: ACE1AF;" text="ADD">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="updateRoomButton" layoutX="351.0" layoutY="655.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: ACE1AF;" text="UPDATE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="deleteRoomButton" layoutX="541.0" layoutY="655.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: ACE1AF;" text="DELETE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+         </AnchorPane>
+      </Tab>
+      <Tab text="Users">
+         <VBox alignment="CENTER">
+            <TableView fx:id="usersTable" editable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="746.0" prefWidth="797.0">
+               <columns>
+                  <TableColumn fx:id="idUserColumn" prefWidth="100.0" style="-fx-background-color: transparent;" text="ID" />
+                  <TableColumn fx:id="firstNameColumn" prefWidth="150.0" style="-fx-background-color: transparent;" text="FIRST NAME" />
+                  <TableColumn fx:id="lastNameColumn" prefWidth="200.0" style="-fx-background-color: transparent;" text="LAST NAME" />
+                  <TableColumn fx:id="emailColumn" prefWidth="200.0" style="-fx-background-color: transparent;" text="EMAIL" />
+                  <TableColumn fx:id="usernameColumn" prefWidth="147.11114501953125" style="-fx-background-color: transparent;" text="USERNAME" />
+               </columns>
             </TableView>
-        </Tab>
-    </TabPane>
-</AnchorPane>
+         </VBox>
+      </Tab>
+   </TabPane>
+   <Pane layoutX="-1.0" layoutY="-10.0" prefHeight="796.0" prefWidth="189.0" style="-fx-background-color: ACE1AF;">
+      <Button fx:id="myProfileButton" layoutX="54.0" layoutY="286.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="My Profile">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <ImageView fx:id="logOutButton" fitHeight="40.0" fitWidth="40.0" layoutX="33.0" layoutY="719.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@/images/logOut.png" />
+      </ImageView>
+      <Label fx:id="nameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="173.0" prefHeight="35.0" prefWidth="189.0" text="Name" textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Text fill="#0ecc18" layoutX="19.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin page">
+         <font>
+            <Font name="Freestyle Script" size="51.0" />
+         </font>
+      </Text>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutY="138.0" prefHeight="35.0" prefWidth="189.0" text="Welcome">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+   </Pane>
+   <Pane layoutX="1060.0" layoutY="34.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: ACE1AF; -fx-background-radius: 20;">
+      <children>
+         <Label layoutX="29.0" layoutY="19.0" text="Total Income">
+            <font>
+               <Font size="24.0" />
+            </font>
+         </Label>
+         <Label fx:id="totalIncome" alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="82.0" prefHeight="35.0" prefWidth="208.0" text="0 $" textAlignment="CENTER">
+            <font>
+               <Font size="24.0" />
+            </font>
+         </Label>
+      </children>
+   </Pane>
+   <Pane layoutX="1060.0" layoutY="263.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: ACE1AF; -fx-background-radius: 20;">
+      <children>
+         <Label layoutX="29.0" layoutY="19.0" text="No. Of Rooms">
+            <font>
+               <Font size="24.0" />
+            </font>
+         </Label>
+         <Label fx:id="totalRooms" alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="82.0" prefHeight="35.0" prefWidth="208.0" text="0" textAlignment="CENTER">
+            <font>
+               <Font size="24.0" />
+            </font>
+         </Label>
+      </children>
+   </Pane>
+</Pane>
